@@ -1690,7 +1690,7 @@ HoneyShopPath:
         Sleep, % FastMode ? 50 : 200
         quickDetect(0x26EE26, 0x1DB31D, 5, 0.4262, 0.2903, 0.6918, 0.8208)
         Sleep, 50
-        uiUniversal("3606", 0, 1)
+        uiUniversal("3605", 0, 1)
         Sleep, % FastMode ? 50 : 200
         currentPos := targetPos
         Sleep, 100
