@@ -30,7 +30,6 @@ global gearAutoActive := 0
 global eggAutoActive  := 0
 global safeCheckAutoActive := 0
 
-global triedVerify := 0 
 
 
 global actionQueue := []
@@ -170,25 +169,8 @@ showPopupMessage(msgText := "nil", duration := 2000) {
 }
 
 
-DonateResponder(ctrlName) {
+; removed donation handling
 
-
-    if (ctrlName = "Donate100")
-        Run, https://www.roblox.com/game-pass/1197306369/100-Donation
-    else if (ctrlName = "Donate500")
-        Run, https://www.roblox.com/game-pass/1222540123/500-Donation
-    else if (ctrlName = "Donate1000")
-        Run, https://www.roblox.com/game-pass/1222262383/1000-Donation
-    else if (ctrlName = "Donate2500")
-        Run, https://www.roblox.com/game-pass/1222306189/2500-Donation
-    else if (ctrlName = "Donate10000")
-        Run, https://www.roblox.com/game-pass/1220930414/10-000-Donation
-    else if (ctrlName = "Donate50000")
-        Run, https://www.roblox.com/game-pass/1234519691/50-000-Donation
-    else
-        return
-
-}
 
 ; mouse functions
 
@@ -510,41 +492,12 @@ ShowWelcome:
     Gui, 99: Show, w788 h492 Center, Virage Grow a Garden Macro [COSMETIC UPDATE]
 return
 
-ShowVerify:
-    Gui, 2: +AlwaysOnTop -Resize +ToolWindow
-    Gui, 2: Margin, 10, 10
-    Gui, 2: Font, s10 cBlack Bold, Segoe UI
-    Gui, 2: Add, Text, x10 y10 w380 h40 Center, To use Virage's macro, you must follow Virage on Roblox.
-    Gui, 2: Font, s9 cWhite, Segoe UI
-    Gui, 2: Add, Button, x50 y60 w120 h30 gFollowUser, Follow User
-    Gui, 2: Add, Button, x210 y60 w120 h30 gVerifyUser, Verify
-    Gui, 2: Show,  w400 h110 Center, Virage Verification
-Return
-
 Continue:
     Gui, 99: Destroy
-    triedVerify := 0
-    Gosub, ShowVerify
+    IniWrite, 0, %settingsFile%, Settings, FirstRun
+    Gosub, ShowGui
 return
 
-
-
-FollowUser:
-    ; Replace ##### below with Virage’s actual Roblox numeric user‐ID
-    Run, https://www.roblox.com/users/1066729576/profile
-return
-
-VerifyUser:
-    if (triedVerify = 0) {
-               MsgBox, 0x41030, Verification Error, Please make sure you follow Virage on Roblox, or wait around 10 seconds for the system to verify and try again.
-        triedVerify := 1
-    } else {
-        Gui, 2: Destroy
-        Gui, 99: Destroy
-        IniWrite, 0, %settingsFile%, Settings, FirstRun
-        Gosub, ShowGui
-    }
-Return
 
 
 
@@ -595,7 +548,7 @@ ShowGui:
     Gui, Margin, 10, 10
     Gui, Color, 0x202020
     Gui, Font, s9 cWhite, Segoe UI
-Gui, Add, Tab, x10 y10 w500 h400 vMyTab -Wrap, Seeds|Gears|Eggs|Cosmetics|Settings|Donate|Credits
+Gui, Add, Tab, x10 y10 w500 h400 vMyTab -Wrap, Seeds|Gears|Eggs|Cosmetics|Settings|Credits
 
 
     Gui, Tab, 1
@@ -732,88 +685,16 @@ Gui, Add, Button, x400 y140 w85 h18 gSavePrivateURL Background202020, Save Link
     Gui, Add, Button, x50 y335 w150 h40 gStartScan Background202020, Start Macro (F5)
     Gui, Add, Button, x320 y335 w150 h40 gQuit Background202020, Stop Macro (F7)
 
-       Gui, Tab, 6
-    Gui, Font, s9 cWhite Bold, Segoe UI
-    Gui, Add, GroupBox, x23 y50 w475 h340 cD7A9E3, Donate
-
-Gui, Font, s8 cD7A9E3 Bold, Segoe UI
-Gui, Add, Button, x38  y80 w70 h28 gDonate vDonate100     BackgroundF0F0F0, 100 Robux
-Gui, Add, Button, x113 y80 w70 h28 gDonate vDonate500     BackgroundF0F0F0, 500 Robux
-Gui, Add, Button, x188 y80 w70 h28 gDonate vDonate1000    BackgroundF0F0F0,1000 Robux
-Gui, Add, Button, x263 y80 w70 h28 gDonate vDonate2500    BackgroundF0F0F0,2500 Robux
-Gui, Add, Button, x338 y80 w70 h28 gDonate vDonate10000   BackgroundF0F0F0,10000 Robux
-Gui, Add, Button, x413 y80 w70 h28 gDonate vDonate50000   BackgroundF0F0F0,50000 Robux
 
 
-    Gui, Add, Text, x60 y120 w400 +Center, Top Donators:
-
-    Gui, Font, s9 cWhite, Segoe UI
-; Row 1
-Gui, Add, Picture, x80  y140 w24 h24, %A_ScriptDir%\Images\avatars\RuizuKun_Dev.png
-Gui, Add, Text,    x110 y150 w200 h24, RuizuKun_Dev
-Gui, Add, Text,    x350 y150 w100 h24 +Right, 10000
-
-; Row 2
-Gui, Add, Picture, x80  y170 w24 h24, %A_ScriptDir%\Images\avatars\KeoniHater666.png
-Gui, Add, Text,    x110 y180 w200 h24, KeoniHater666
-Gui, Add, Text,    x350 y180 w100 h24 +Right, 2000
-
-; Row 3
-Gui, Add, Picture, x80  y200 w24 h24, %A_ScriptDir%\Images\avatars\MarvelousMarmoset.png
-Gui, Add, Text,    x110 y210 w200 h24, MarvelousMarmoset
-Gui, Add, Text,    x350 y210 w100 h24 +Right, 1500
-
-; Row 4
-Gui, Add, Picture, x80  y230 w24 h24, %A_ScriptDir%\Images\avatars\peanut1268a.png
-Gui, Add, Text,    x110 y240 w200 h24, peanut1268a
-Gui, Add, Text,    x350 y240 w100 h24 +Right, 1100
-
-; Row 5
-Gui, Add, Picture, x80  y260 w24 h24, %A_ScriptDir%\Images\avatars\BarlosWithaB.png
-Gui, Add, Text,    x110 y270 w200 h24, BarlosWithaB
-Gui, Add, Text,    x350 y270 w100 h24 +Right, 1000
-
-; Row 6
-Gui, Add, Picture, x80  y290 w24 h24, %A_ScriptDir%\Images\avatars\thefreakstoftoday.png
-Gui, Add, Text,    x110 y300 w200 h24, thefreakstoftoday
-Gui, Add, Text,    x350 y300 w100 h24 +Right, 1000
-
-; Row 7
-Gui, Add, Picture, x80  y320 w24 h24, %A_ScriptDir%\Images\avatars\zay_karate744.png
-Gui, Add, Text,    x110 y330 w200 h24, zay_karate744
-Gui, Add, Text,    x350 y330 w100 h24 +Right, 1000
-
-; Row 8
-Gui, Add, Picture, x80  y350 w24 h24, %A_ScriptDir%\Images\avatars\thefiredragonbest.png
-Gui, Add, Text,    x110 y360 w200 h24, thefiredragonbest
-Gui, Add, Text,    x350 y360 w100 h24 +Right, 600
-
-
-
-    Gui, Tab, 7
+    Gui, Tab, 6
     Gui, Font, s9 cWhite, Segoe UI
     Gui, Add, GroupBox, x23 y50 w475 h340 cD3D3D3, Credits
 
-    Gui, Add, Picture, x40 y70 w48 h48, % mainDir "Images\\Virage.png"
     Gui, Font, s10 cWhite Bold, Segoe UI
-    Gui, Add, Text, x100 y70 w200 h24, Virage
-    Gui, Font, s8 cFFC0CB Italic, Segoe UI
-    Gui, Add, Text, x100 y96 w200 h16, Macro Creator
+    Gui, Add, Text, x40 y80 w300 h24, Polar
     Gui, Font, s8 cWhite, Segoe UI
-    Gui, Add, Text, x40 y130 w200 h40, This started as a small project that turned into a side quest...
-
-    Gui, Add, Picture, x240 y70 w48 h48, % mainDir "Images\\Real.png"
-    Gui, Font, s10 cWhite Bold, Segoe UI
-    Gui, Add, Text, x300 y70 w180 h24, Real
-    Gui, Font, s8 cWhite, Segoe UI
-    Gui, Add, Text, x300 y96 w180 h40, Greatly helped to modify the macro to make it better and more consistent.
-
-    Gui, Font, s9 cWhite Bold, Segoe UI
-    Gui, Add, Text, x40 y200 w200 h20, Extra Resources:
-    Gui, Font, s8 cD3D3D3 Underline, Segoe UI
-    Gui, Add, Link, x40 y224 w300 h16, Join the <a href="https://discord.com/invite/BPPSAG8MN5">Discord Server</a>!
-    Gui, Add, Link, x40 y244 w300 h16,  Check the <a href="https://github.com/VirageRoblox/Virage-Grow-A-Garden-Macro/releases/latest">Github</a> for the latest macro updates!
-    Gui, Add, Link, x40 y264 w300 h16, Watch the latest macro <a href="https://youtu.be/L6GsrZYjECY">tutorial</a> on Youtube!
+    Gui, Add, Text, x40 y110 w300 h20, And nobody else
   
 
 
@@ -992,11 +873,7 @@ AutoReconnect:
 Return
 
 
-Donate:
-
-    DonateResponder(A_GuiControl)
-    
-Return
+; donation tab removed
 
 HideTooltip:
 
