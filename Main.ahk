@@ -30,7 +30,6 @@ global gearAutoActive := 0
 global eggAutoActive  := 0
 global safeCheckAutoActive := 0
 
-global triedVerify := 0 
 
 
 global actionQueue := []
@@ -510,41 +509,12 @@ ShowWelcome:
     Gui, 99: Show, w788 h492 Center, Virage Grow a Garden Macro [COSMETIC UPDATE]
 return
 
-ShowVerify:
-    Gui, 2: +AlwaysOnTop -Resize +ToolWindow
-    Gui, 2: Margin, 10, 10
-    Gui, 2: Font, s10 cBlack Bold, Segoe UI
-    Gui, 2: Add, Text, x10 y10 w380 h40 Center, To use Virage's macro, you must follow Virage on Roblox.
-    Gui, 2: Font, s9 cWhite, Segoe UI
-    Gui, 2: Add, Button, x50 y60 w120 h30 gFollowUser, Follow User
-    Gui, 2: Add, Button, x210 y60 w120 h30 gVerifyUser, Verify
-    Gui, 2: Show,  w400 h110 Center, Virage Verification
-Return
-
 Continue:
     Gui, 99: Destroy
-    triedVerify := 0
-    Gosub, ShowVerify
+    IniWrite, 0, %settingsFile%, Settings, FirstRun
+    Gosub, ShowGui
 return
 
-
-
-FollowUser:
-    ; Replace ##### below with Virage’s actual Roblox numeric user‐ID
-    Run, https://www.roblox.com/users/1066729576/profile
-return
-
-VerifyUser:
-    if (triedVerify = 0) {
-               MsgBox, 0x41030, Verification Error, Please make sure you follow Virage on Roblox, or wait around 10 seconds for the system to verify and try again.
-        triedVerify := 1
-    } else {
-        Gui, 2: Destroy
-        Gui, 99: Destroy
-        IniWrite, 0, %settingsFile%, Settings, FirstRun
-        Gosub, ShowGui
-    }
-Return
 
 
 
