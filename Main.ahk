@@ -484,16 +484,7 @@ else
 return
 
 ShowWelcome:
-    Gui, 99: Destroy
-    Gui, 99: +AlwaysOnTop -Resize +ToolWindow
-    Gui, 99: Margin, 10, 10
-    Gui, 99: Add, Picture, x10 y0 w768 h432, %A_ScriptDir%\Images\welcome.png
-    Gui, 99: Add, Button, x240 y+10 w300 h40 gContinue, Continue
-    Gui, 99: Show, w788 h492 Center, Virage Grow a Garden Macro [COSMETIC UPDATE]
-return
-
-Continue:
-    Gui, 99: Destroy
+    MsgBox, 0, Welcome, Welcome to the Virage Grow a Garden Macro!
     IniWrite, 0, %settingsFile%, Settings, FirstRun
     Gosub, ShowGui
 return
@@ -692,9 +683,9 @@ Gui, Add, Button, x400 y140 w85 h18 gSavePrivateURL Background202020, Save Link
     Gui, Add, GroupBox, x23 y50 w475 h340 cD3D3D3, Credits
 
     Gui, Font, s10 cWhite Bold, Segoe UI
-    Gui, Add, Text, x40 y80 w300 h24, Polar
+    Gui, Add, Text, x40 y80 w300 h24, Polar - Lead Developer
     Gui, Font, s8 cWhite, Segoe UI
-    Gui, Add, Text, x40 y110 w300 h20, And nobody else
+    Gui, Add, Text, x40 y110 w300 h20, Thanks to everyone who contributed!
   
 
 
