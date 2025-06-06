@@ -1,4 +1,4 @@
-; Virage Grow a Garden Macro [BIZZY BEE UPDATE]
+; Lynx's Grow a Garden Macro [BIZZY BEE UPDATE]
 
 #SingleInstance, Force
 #NoEnv
@@ -484,7 +484,7 @@ else
 return
 
 ShowWelcome:
-    MsgBox, 0, Welcome, Welcome to the Virage Grow a Garden Macro!
+    MsgBox, 0, Welcome, Welcome to the Lynx's Grow a Garden Macro!
     IniWrite, 0, %settingsFile%, Settings, FirstRun
     Gosub, ShowGui
 return
@@ -690,7 +690,7 @@ Gui, Add, Button, x400 y140 w85 h18 gSavePrivateURL Background202020, Save Link
 
 
 
-    Gui, Show, w520 h425, Virage Grow a Garden Macro [BIZZY BEE UPDATE]
+    Gui, Show, w520 h425, Lynx's Grow a Garden Macro [BIZZY BEE UPDATE]
 
 Return
 
