@@ -1,6 +1,8 @@
 # Virage x JoshAS: Grow a Garden Macro – Cracked Premium Edition  
 *Fully unlocked macro for Roblox's "Grow a Garden" with all paid features enabled — no paywall, no restrictions!*
 
+**THE ORIGINAL MACRO UPDATE HAS BROKEN A FEW THINGS, LAZY DEVELOPERS ONLY WANTING A PAYDAY, I WILL UPDATE THE CRACK ONCE THEY RELEASE FIXES.**
+
 ---
 
 ## 🚀 Installation
