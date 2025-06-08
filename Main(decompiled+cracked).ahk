@@ -6,8 +6,6 @@ SetMouseDelay, -1
 SetWinDelay, -1
 SetControlDelay, -1
 SetBatchLines, -1
-global VERIFIED_KEY := "VerifiedUser"
-global GAME_PASS_IDS := [1244038348, 1222540123, 1222262383, 1222306189, 1220930414]
 EnvGet, LOCAL_COMPUTER_NAME, ComputerName
 global WEB_APP_URL := "https://script.google.com/macros/s/AKfycbys_0dn2UPA4fXqNgqqYIHnUxoDUIusA8BoIVSghSJ8BR7colxlDEYLhqvv4OVCE6Is/exec"
 global webhookURL
@@ -691,139 +689,6 @@ honeyItems := ["Flower Seed Pack", "placeHolder1", "Lavender Seed", "Nectarshade
 realHoneyItems := ["Flower Seed Pack", "Lavender Seed", "Nectarshade Seed", "Nectarine Seed", "Hive Fruit Seed", "Pollen Rader", "Nectar Staff"
 , "Honey Sprinkler", "Bee Egg", "Bee Crate", "Honey Comb", "Bee Chair", "Honey Torch", "Honey Walkway"]
 settingsFile := A_ScriptDir "\settings.ini"
-VerifyOwnership()
-Return
-VerifyOwnership()
-{
-global GAME_PASS_ID, WEB_APP_URL, VERIFIED_KEY, settingsFile
-savedUser := LoadVerifiedUser()
-if (savedUser <> "") {
-userId := GetUserId(savedUser)
-if (userId && OwnsGamepass(userId, GAME_PASS_ID)) {
-EnvGet, compName, ComputerName
-encodedUser := URLEncode(savedUser)
-encodedPC   := URLEncode(compName)
-fullURL := WEB_APP_URL . "?username=" . encodedUser . "&computer=" . encodedPC
-HttpObj := ComObjCreate("WinHttp.WinHttpRequest.5.1")
-HttpObj.Open("GET", fullURL, false)
-HttpObj.Send()
-status := HttpObj.Status
-response := HttpObj.ResponseText
-if (status != 200) {
-MsgBox, 16, HTTP Error, Failed to contact the web app.nHTTP Status: %status%
-ExitApp
-}
-if (InStr(response, """exists"":true") && InStr(response, """matched"":true")) {
-MsgBox, 64, Welcome Back %savedUser%!, User "%savedUser%" is already verified on this PC.
-Gosub, @fff@fkk@fffffkkkf@kf@@f#kkk
-Return
-} else {
-DeleteVerifiedUser()
-}
-} else {
-DeleteVerifiedUser()
-}
-}
-Gosub, CombinedVerify
-Return
-}
-LoadVerifiedUser()
-{
-global settingsFile, VERIFIED_KEY
-IniRead, uname, %settingsFile%, Main, %VERIFIED_KEY%,
-return Trim(uname)
-}
-SaveVerifiedUser(username)
-{
-global settingsFile, VERIFIED_KEY
-IniWrite, %username%, %settingsFile%, Main, %VERIFIED_KEY%
-}
-DeleteVerifiedUser()
-{
-global settingsFile, VERIFIED_KEY
-IniWrite, %A_Space%, %settingsFile%, Main, %VERIFIED_KEY%
-}
-CombinedVerify:
-{
-global GAME_PASS_ID, WEB_APP_URL, VERIFIED_KEY, settingsFile
-InputBox, username, Verify Premium Macro, Enter your Roblox username:, , 300, 130
-if (ErrorLevel)
-ExitApp
-username := Trim(username)
-if (username = "") {
-MsgBox, 48, Error, You must enter a nonâ€empty username.
-ExitApp
-}
-userId := GetUserId(username)
-if (!userId)
-ExitApp
-hasPass := false
-for _, gpId in GAME_PASS_IDS {
-if OwnsGamepass(userId, gpId) {
-hasPass := true
-break
-}
-}
-if (!hasPass) {
-MsgBox, 48, Does Not Own, User '%username%' (ID %userId%) doesâ€¯NOTâ€¯own GamePass %GAME_PASS_ID%.nMake sure inventory is public or the pass is purchased.
-ExitApp
-}
-EnvGet, compName, ComputerName
-encodedUser := URLEncode(username)
-encodedPC   := URLEncode(compName)
-fullURL := WEB_APP_URL . "?username=" . encodedUser . "&computer=" . encodedPC
-HttpObj := ComObjCreate("WinHttp.WinHttpRequest.5.1")
-HttpObj.Open("GET", fullURL, false)
-HttpObj.Send()
-status := HttpObj.Status
-responseText := HttpObj.ResponseText
-if (status != 200) {
-MsgBox, 16, HTTP Error, Failed to contact the web app.nHTTP Status: %status%
-ExitApp
-}
-if InStr(responseText, """exists"":true") && InStr(responseText, """matched"":false") {
-MsgBox, 48, Sheet Check, Username %username% is already registered on a different PC. Access denied.
-ExitApp
-}
-else if InStr(responseText, """exists"":false") {
-MsgBox, 64, Sheet Check, Successfully registered %username% on this PC! Welcome!
-}
-else if InStr(responseText, """exists"":true") && InStr(responseText, """matched"":true") {
-MsgBox, 64, Sheet Check, %username% already registered on this PC. Welcome back!
-}
-else {
-MsgBox, 16, Unexpected Response, Got unexpected JSON from Sheet check:n%responseText%
-ExitApp
-}
-SaveVerifiedUser(username)
-MsgBox, 64, Verified!, User '%username%' verified. Loading main GUI...
-Gosub, @fff@fkk@fffffkkkf@kf@@f#kkk
-Return
-}
-GetUserId(username)
-{
-global
-USERNAME_LOOKUP_URL := "https://users.roblox.com/v1/usernames/users"
-payload := "{""usernames"":[""" username """],""excludeBannedUsers"":true}"
-http := ComObjCreate("MSXML2.XMLHTTP")
-http.Open("POST", USERNAME_LOOKUP_URL, false)
-http.SetRequestHeader("Content-Type", "application/json")
-http.Send(payload)
-if (http.Status != 200)
-{
-MsgBox, 16, Network Error, % "Failed to reach Roblox user lookup API.nStatus: " . http.Status
-return 0
-}
-resp := http.responseText
-if RegExMatch(resp, """id"":\s*(\d+)", m)
-return m1
-MsgBox, 16, User Not Found, Username '%username%' not found.
-return 0
-}
-OwnsGamepass(userId, gamePassId)
-{
-return true
-}
 URLEncode(str)
 {
 static chars := "0123456789ABCDEF"
@@ -1008,24 +873,16 @@ Gui, Add, Button, x320 y335 w150 h40 g@fk#@ff@kf@kfk#k#f@kkfkkkff#f#@kfk@fk# Bac
 Gui, Tab, 7
 Gui, Font, s9 cWhite Bold, Segoe UI
 Gui, Add, GroupBox, x23 y50 w475 h340 cD3D3D3, Credits
-Gui, Add, Picture, x40 y70 w48 h48, % mainDir "Images\\Virage.png"
+Gui, Add, Picture, x40 y70 w48 h48, % mainDir "Images\\Josh.png"
 Gui, Font, s10 cWhite Bold, Segoe UI
-Gui, Add, Text, x100 y70 w200 h24, Virage
+Gui, Add, Text, x100 y70 w200 h24, Josh
 Gui, Font, s8 cFFC0CB Italic, Segoe UI
-Gui, Add, Text, x100 y96 w200 h16, Macro Creator
+Gui, Add, Text, x100 y96 w200 h16, Made this free
 Gui, Font, s8 cWhite, Segoe UI
-Gui, Add, Text, x40 y130 w200 h40, This started as a small project that turned into a side quest...
-Gui, Add, Picture, x240 y70 w48 h48, % mainDir "Images\\Real.png"
-Gui, Font, s10 cWhite Bold, Segoe UI
-Gui, Add, Text, x300 y70 w180 h24, Real
-Gui, Font, s8 cWhite, Segoe UI
-Gui, Add, Text, x300 y96 w180 h40, Greatly helped to modify the macro to make it better and more consistent.
-Gui, Font, s9 cWhite Bold, Segoe UI
+Gui, Add, Text, x40 y130 w200 h40, Selling an ahk script for 500 robux is terrible, anyways ur obsfucator is ass
 Gui, Add, Text, x40 y200 w200 h20, Extra Resources:
 Gui, Font, s8 cD3D3D3 Underline, Segoe UI
-Gui, Add, Link, x40 y224 w300 h16, Join the <a href="https://discord.com/invite/BPPSAG8MN5">Discord Server</a>!
-Gui, Add, Link, x40 y244 w300 h16,  Check the <a href="https://github.com/VirageRoblox/Virage-Grow-A-Garden-Macro/releases/latest">Github</a> for the latest macro updates!
-Gui, Add, Link, x40 y264 w300 h16, Watch the latest macro <a href="https://www.youtube.com/@VirageRoblox">tutorial</a> on Youtube!
+Gui, Add, Link, x40 y244 w300 h16,  Check the <a href="https://github.com/Josh-AS/Virage-Grow-A-Garden-Macro-PREMIUM-CRACKED-/">Github</a> for the latest macro updates!
 Gui, Show, w520 h425, Virage GAG Macro (JoshAS Crack)
 Return
 #fkkkkk#kff@f#kkfkfk@k@kk@fk@ff#fff#:
