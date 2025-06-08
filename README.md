@@ -55,6 +55,3 @@ Before launching the macro, make sure to:
 This is a **cracked** and **repacked** version of the macro originally made by Virage, with JoshAS joining in for some extra fun. Use responsibly and at your own risk.
 
 ---
-
-## 🌐 Join the Community  
-Discord Server: [https://discord.com/VirageMacros](https://discord.com/invite/BPPSAG8MN5)
