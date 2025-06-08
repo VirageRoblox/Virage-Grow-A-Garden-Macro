@@ -1,25 +1,60 @@
-# Virage Grow A Garden Macro
-A macro for the Roblox game "Grow a Garden"
+# Virage x JoshAS: Grow a Garden Macro – Cracked Premium Edition  
+*Fully unlocked macro for Roblox's "Grow a Garden" with all paid features enabled — no paywall, no restrictions!*
 
- ## Installation
- - First of all, you need to download [AutoHotKey v1.1](https://www.autohotkey.com/) (Not 2.0), and run the installer
- - Once complete, download the most recent version of the Virage Grow A Garden Macro through the most recent [GitHub Release](https://github.com/VirageRoblox/Virage-Grow-A-Garden-Macro/releases/latest)(Download source code ZIP)
- - After downloading, extract the ZIP file to your desired directory
+---
 
-Before starting the macro:
-- ensure you **extracted** the macro file
-- **don't** go full screen, be in windowed fullscreen
-- Set your roblox camera mode to the following --> **default(classic)**
-- put "Recall Wrench" in the **2nd hot bar slot** --> macro may bug out and not automatically do it
-- have 5-10 things in your hotbar
-- make sure UI Navigation is turned **ON** in your Roblox settings
-- unequip your **“grey mouse” pet** if you have some equipped since they give you a speed bonus that will break the macro
+## 🚀 Installation
 
-## Features
-Virage Grow A Garden Macro has a couple of different features it is capable of. These include:
-- Automatic buying from all Shops, with the options to check the items you want the macro to purchase
-- Discord Webhook integration
-- Multi-alts macroing
-- Fast mode/Slow mode
+1. **Download and install [AutoHotkey v1.1](https://www.autohotkey.com/)** (Not v2.0) if you don’t have it yet.  
+2. Grab the latest cracked release ZIP from this repository’s [GitHub Releases](https://github.com/YourRepoHere) (source code included).  
+3. Extract the ZIP to your preferred folder.
 
- Discord Server: [https://discord.com/VirageMacros](https://discord.com/invite/BPPSAG8MN5)
+---
+
+## 🎮 Setup & Usage Tips
+
+Before launching the macro, make sure to:  
+- Extract all files completely.  
+- Run Roblox in **windowed fullscreen** (avoid true fullscreen).  
+- Set your Roblox camera mode to **Default (Classic)**.  
+- Place the **Recall Wrench** in your **2nd hotbar slot** (the macro auto-assigns it during alignment but double-check).  
+- Have **5-10 items** in your hotbar for smooth operation.  
+- Enable **UI Navigation** in Roblox settings.  
+- Unequip any pets that grant speed boosts (like the grey mouse pet) to prevent macro desync.  
+
+---
+
+## 🐝 Features – All Premium Unlocked!
+
+- **Honey Shop Access & New Honey Items** fully unlocked!  
+- **Auto-Collect Pollinated Plants** (requires fully expanded garden and pollen radar).  
+- **Auto-Deposit & Compress Pollinated Plants** for effortless inventory management.  
+- **Ember Lily Seed** added to the seed shop.  
+- **Friendship Pot** now available in the gear shop.  
+- Multi-Instance Mode fully enabled — run multiple Roblox clients simultaneously!  
+- Dropdown menus for adjusting macro speed and UI navigation keybinds.  
+- Auto-slot Recall Wrench during alignment and auto-reconnect support.  
+- Clean UI with donation tab removed (no annoying paywall prompts).  
+- Discord webhook integration for updates and notifications.  
+- Multi-alts macroing support.  
+- Fast mode / Slow mode options for tailored gameplay speed.
+
+---
+
+## 🐞 Bug Fixes & Improvements
+
+- Fixed auto-reconnect issues for more reliable uptime.  
+- Gear shop clicks properly registered now.  
+- UI navigation initializes on hotbar correctly.  
+- Failsafe added to prevent accidental refresh eggs clicking.  
+- Various small polish and stability fixes.
+
+---
+
+## 📢 Disclaimer  
+This is a **cracked** and **repacked** version of the macro originally made by Virage, with JoshAS joining in for some extra fun. Use responsibly and at your own risk.
+
+---
+
+## 🌐 Join the Community  
+Discord Server: [https://discord.com/VirageMacros](https://discord.com/invite/BPPSAG8MN5)
