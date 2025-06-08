@@ -1673,6 +1673,8 @@ kfk#@%k@k@ff%k@kf%#fk@%kkk@ff@("gear", gearsCompleted)
 ffk%fk#ff@%fkf%kfkkk#%f#ff#f(0, 1, "0")
 ffk@%k@#kk#%@%@kkk@f@k%f@ff@@k(webhookURL, "**[Gears Completed]**")
 Return
+
+
 k@ffk@k##kkk#fkfk@ff#kffkk:
 cosmeticsCompleted := 0
 ffkfk%ffkf#k%ff#f%#fk#%f#f(0, 1, "0")
@@ -1723,6 +1725,97 @@ fkfkk%k@ffff#f%@@k@kkk("11110")
 ffkfk%#ff#k#k#%%ffkf#k%ff#ff#f(0, 1, "0")
 ff%k#ff#f%k@@f%@k@kk@f#%@ff@@k(webhookURL, "**[Cosmetics Completed]**")
 Return
+
+Cosmetic1:
+
+    Sleep, 50
+    Loop, 5 {
+        fkfkk@@k@kkk("161616161646465606")
+        Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
+    }
+
+Return
+
+Cosmetic2:
+
+    Sleep, 50
+    Loop, 5 {
+        fkfkk@@k@kkk("1616161616464626265606")
+        Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
+    }
+
+Return
+
+Cosmetic3:
+
+    Sleep, 50
+    Loop, 5 {
+        fkfkk@@k@kkk("16161616164646262626265606")
+        Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
+    }
+
+Return
+
+Cosmetic4:
+
+    Sleep, 50
+    Loop, 5 {
+        fkfkk@@k@kkk("1616161616464626262626465606")
+        Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
+    }
+
+Return
+
+Cosmetic5:
+
+    Sleep, 50
+    Loop, 5 {
+        fkfkk@@k@kkk("161616161646462626262646165606")
+        Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
+    }
+
+Return
+
+Cosmetic6:
+
+    Sleep, 50
+    Loop, 5 {
+        fkfkk@@k@kkk("16161616164646262626264616165606")
+        Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
+    }
+
+Return
+
+Cosmetic7:
+
+    Sleep, 50
+    Loop, 5 {
+        fkfkk@@k@kkk("1616161616464626262626461616165606")
+        Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
+    }
+
+Return
+
+Cosmetic8:
+
+    Sleep, 50
+    Loop, 5 {
+        fkfkk@@k@kkk("161616161646462626262646161616165606")
+       Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
+    }
+
+Return
+
+Cosmetic9:
+
+    Sleep, 50
+    Loop, 5 {
+        fkfkk@@k@kkk("16161616164646262626264616161616165606")
+        Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
+    }
+
+Return
+
 f#kf@fk#f#fkf#k#k#ff#k:
 ffk@%k#@fkk%@f@%@ffk@ffk%ff@@k(webhookURL, "**[Pollenated Plant Collection Cycle]**")
 fkfkk@@%fffk#fk@%k@kkk("11110")
@@ -1878,6 +1971,8 @@ ffkf%f@#kfkkk%kff#f%#kf#ff%f#f(0, 1, "0")
 fk%@ff@fk#f%fkk@@k@kkk(11110)
 ffk%fk#k@fff%@@f@ff@@k(webhookURL, "**[Pollenated Plant Collection Completed]**")
 Return
+
+;Honey Deposit Cycle
 fffkk#kk#fkf#k#kf#f@#f#kfk#kk#k@kk#k#kk#k#:
 depositCount := 0
 ff%kffk%k@@f@ff@@k(webhookURL, "**[Honey Deposit Cycle]**")
