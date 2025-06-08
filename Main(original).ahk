@@ -1,4 +1,4 @@
-﻿#SingleInstance, Force
+#SingleInstance, Force
 #NoEnv
 SetWorkingDir %A_ScriptDir%
 #WinActivateForce
@@ -6,10 +6,15 @@ SetMouseDelay, -1
 SetWinDelay, -1
 SetControlDelay, -1
 SetBatchLines, -1
+global VERIFIED_KEY := "VerifiedUser"
+global GAME_PASS_IDS := [1244038348, 1222540123, 1222262383, 1222306189, 1220930414]
+EnvGet, LOCAL_COMPUTER_NAME, ComputerName
+global WEB_APP_URL := "https://script.google.com/macros/s/AKfycbys_0dn2UPA4fXqNgqqYIHnUxoDUIusA8BoIVSghSJ8BR7colxlDEYLhqvv4OVCE6Is/exec"
 global webhookURL
 global privateServerLink
 global discordUserID
 global PingSelected
+global reconnectingProcess
 global windowIDS := []
 global currentWindow := ""
 global firstWindow := ""
@@ -49,8 +54,6 @@ global gearScroll_1080p, toolScroll_1440p_100, toolScroll_1440p_125
 gearScroll_1080p     := [1, 2, 4, 6, 8, 9, 11, 13]
 gearScroll_1440p_100 := [2, 3, 6, 8, 10, 13, 15, 17]
 gearScroll_1440p_125 := [1, 3, 4, 6, 8, 9, 12, 12]
-
-
 ffk@@f@ff@@k(@f@fk#ff#k#fkfkf, f@fkffk#k@fk@fkf) {
 FormatTime, messageTime, , hh:mm:ss tt
 fullMessage := "[" . messageTime . "] " . f@fkff%ff@k#f%k#k@fk@fkf
@@ -69,8 +72,6 @@ return
 return
 }
 }
-
-
 k#kk@ff@ff#f@f@k(kkkkff#ffkkf, k#k@kkk#kfffkfk@ := 0, k#kkk#fff@kkff@f := "nil") {
 global webhookURL
 global privateServerLink
@@ -133,8 +134,6 @@ GuiControl,, privateServerLink, %savedServerLink%
 }
 return isValid
 }
-
-
 #k@f#fkkkk#f(#kf@@k@k@fkf#k := "nil", @k#kkfkkffk@kkkf := 2000) {
 static popupID := 99
 WinGetPos, guiX, guiY, guiW, guiH, A
@@ -159,8 +158,6 @@ Sleep, 2200
 msgBoxCooldown = 0
 }
 }
-
-
 @kff#f@fkffkf##f(ffk@fkfkkfk@k#) {
 MsgBox, 1, Disclaimer,
 (
@@ -181,8 +178,6 @@ Run, https://www.roblox.com/game-pass/1220930414/10-000-Donation
 else
 return
 }
-
-
 fk#kf@fkf@f@#k(#k@fk#@f#fk#kf#f, f@k@k@f#kkkkk@kk) {
 if WinExist("ahk_exe RobloxPlayerBeta.exe") {
 WinGetPos, winX, winY, winW, winH, ahk_exe RobloxPlayerBeta.exe
@@ -191,8 +186,6 @@ moveY := winY + Round(f@k%ff#fkk%@k@f#%f#ffkk%kkkkk@kk * winH)
 MouseMove, %moveX%, %moveY%
 }
 }
-
-
 @fk@kff#k#kkf@#k(@fkkf#kkff#ffk, ff@fkf@k@kk#) {
 if WinExist("ahk_exe RobloxPlayerBeta.exe") {
 WinGetPos, winX, winY, winW, winH, ahk_exe RobloxPlayerBeta.exe
@@ -201,8 +194,6 @@ clickY := winY + Round(f%f#@f%f@fk%kkffkf@k%f@k@kk# * winH)
 Click, %clickX%, %clickY%
 }
 }
-
-
 ff#ff#f@kkff(k##fk#kk@k#fk##k) {
 WinGetPos, winX, winY, winW, winH, ahk_exe RobloxPlayerBeta.exe
 CoordMode, Mouse, Screen
@@ -215,8 +206,6 @@ else if (k##f%kkffkf@k%k#kk@k#fk##k = "y")
 return relY
 return ""
 }
-
-
 fkfkk@@k@kkk(#kk@#ff#@f@ffk := 0, kkk@#ff##fkkk# := 1, #fk@f#k#kk#f#k := 0, kf#kffkfkfff := 0, fk@fk#@fk#fk#k@f := 30, k@fkfkf@kff# := 50, k##kf#kkff#k@k := "universal", #k#fk@#k#kk@kffk := 0, ff#ffkf@ffff#ff@ := "nil", f#@kffk@kf@k := "nil") {
 global SavedSpeed
 global SavedKeybind
@@ -322,8 +311,6 @@ kf@k#k%f@#fff%kfkk#kk#(SavedKeybind)
 }
 return
 }
-
-
 k@f@kf#f@f@kk#kf(kkfff##kk##ffk) {
 global currentArray
 global currentSelectedArray
@@ -361,8 +348,6 @@ Sleep, 100
 fkfkk@%#fk#%@k@kkk(, 0, 1,,,, "close", lastIndex, "up", k%kf#f%kfff##kk##ffk)
 Sleep, 100
 }
-
-
 fk#kfkkkk#fff@kk(fkkkfff#@kk#fkkk := "nil", f#@kk@k@kfff := 1, k@@kk#@kfk#k#f := 30) {
 global SavedSpeed
 if (fk%k#f@%kkfff%ff@k#f%#@kk#fkkk = "nil") {
@@ -373,8 +358,6 @@ Send {%k#ff%%fkkkfff#@kk#fkkk%%f@#f#kkk%}
 Sleep, % (SavedSpeed = "Ultra" ? (k@%@ff@fk#f%@kk#@k%k@ffff#f%fk#k#f - 25) : SavedSpeed = "Max" ? (k@@kk%k@kk@k%#@kfk%fk#ff@%#k#f - 30) : k@@kk%k@#kff#f%#@kfk%#kff#k%#k#f)
 }
 }
-
-
 kf@k#kkfkk#kk#(kk@fk@k#@f@f#f) {
 if (kk@f%#kk#k#k#%k@k#@f@f#f = "\") {
 Send, \
@@ -383,14 +366,10 @@ else if (kk@fk%#k#k@fkf%@k#@f@f#f = "#" || kk@%ff@k#f%fk@k#@f@f#f = "[") {
 Send, {%kk@fk@k#@f@f#f%%fffff@%%kffkff#k%}
 }
 }
-
-
 f#@f@kk@k@@fkf(kf#kf#f@@fffkf, f@@f@k@kk#k##fff) {
 global SavedSpeed
 Sleep, % (SavedSpeed != "Stable") ? kf%kkfff#ff%#kf%k#@kf@f@%#f@@fffkf : f@%#k#f@fk#%@%@ffk@ffk%f@k@kk#k##fff
 }
-
-
 f@f#@f#kf@kfk@(@k@kk#f@fffkkf := "", @kf##k@f@f#f := "", k#@f@k@f#ff#f@fk := "int") {
 FileAppend, % "Searching " . @k@kk%#kk#@f%#f@fffkkf.Name . " for " . @kf%#kk#k#k#%##k@f@f#f . "`n", debug.txt
 for index, item in @k@k%kkk@#f%k#f@fffkkf {
@@ -411,8 +390,6 @@ else if (k#@f@k@%@kk#%f%#kkk@k%#ff#f@fk = "bool") {
 return false
 }
 }
-
-
 @k#k@f@fk#ff(k#fk@f#ff#@fk@ := "nil") {
 global UINavigationFix
 if(k#fk%@k@fkf%@f#ff#@fk@ = "nil") {
@@ -450,8 +427,6 @@ fk%f#@f%fk%@k#f@f@f%k@@k@kkk("2211550554444444444111111155055", 1, 1)
 fkfkk%#ff#k#k#%@@k%kkkkfk#f%@kkk(10)
 }
 }
-
-
 f@fkkkk@fkf#fk(f@f@fkk#k##f#f, #kf#f@@fk#kf := 1, #kk@fkkkkkkf@k := 1) {
 if (f%k@#kkf%%@k@fkf%@f@fkk#k##f#f = "") {
 Return
@@ -470,8 +445,6 @@ Send, {Enter}
 }
 Return
 }
-
-
 f#f@@ffffkf@(kkk#f@fkf#fkf@ff) {
 Loop, 5 {
 Send, {WheelUp}
@@ -491,8 +464,6 @@ Sleep, 20
 }
 @f%kfk@#k%k@kff#k#kkf@#k(midX, midY)
 }
-
-
 ffkfkff#ff#f(#fk##ff#ff@ff#kf := 0, kfkffkkkk@ffk@ := 0, k@ffkkkf@k#ff@ff := "nil") {
 if ((#fk##f%fk#kkk%f#ff@ff%ff@k#f%#kf = 1 && kfkf%#fff@k%fkkkk@ffk@ = 1) || (#fk##%@ffkkfff%ff#ff@ff#kf = 0 && kfkff%fk#kff@f%kk%#kk#k#k#%kk@ffk@ = 0) || k@ffk%kkf@kfff%k%ffkfkk%kf@k#ff@ff = "nil") {
 Return
@@ -506,16 +477,12 @@ else if (#fk##ff%k@f#@k%#ff@ff#kf) {
 Send, {%f#fk@f%%#f@k%%k@ffkkkf@k#ff@ff%}
 }
 }
-
-
 k#@kkfkff#fff@() {
 Loop, 4 {
 Send {Escape}
 Sleep, 100
 }
 }
-
-
 kk@kk#kf#ffk@k(f#ff#kf@kff#k# := 0) {
 global windowIDS
 global idDisplay
@@ -534,8 +501,6 @@ if (f#%@kkk@f@k%f%kf#f%f#kf@kff#k#) {
 Return windowIDS[f#ff#kf%kkk@#f%@kff#k#]
 }
 }
-
-
 kfk#@k@kfkkk@ff@(kkk#fkfkf#k@#f#f, ff#f@kf@fkk#f#kf) {
 StringUpper, kkk#%kfk@#k%fkfkf#k@#f#f, kkk#%@kkk@f@k%fkfkf%f@k@%#k@#f#f, T
 if (ff#f%kffk%@kf@fkk#f#kf) {
@@ -559,16 +524,10 @@ f%fkk#%%#fff%fk@@f@ff@@k(webhookURL, "Failed To Detect " . kkk#fkf%k#f#k#@f%kf#k
 fkfkk%#fff%@@k@kkk("3332223111133322231111054105")
 }
 }
-
-
 kk@fk#k@f#k#k#(k@fkkk@f#fkk := 0, #f@f@k#f@f@kk# := 1) {
 }
-
-
 k@k##kf@f@@k@f#k() {
 }
-
-
 #fkff@f@@fffkfk@(ff#kkffkfffffk, kfkfkk#f@f@kff := 10, k@#ffkkkk#@kkk := 0.0, kf@kff@f#kk##k := 0.0, k@kkk#k@k@f#@fkk := 1.0, fff@@kf@k#fff# := 1.0) {
 global UINavigationFix
 global selectedEggItems
@@ -631,8 +590,6 @@ SetTimer, k%f@f@#f%kk%fffk#fk@%#fkk#ff#kfkfkfk@ff#f@, -1500
 ffk@@%kffkff#k%f@ff@@k(webhookURL, "Failed To Detect Any Egg [Error]" . (PingSelected ? " <@" . discordUserID . ">" : ""))
 }
 }
-
-
 @kk#@f@ffk@k#ff@(#kk#k#ffk@kf@f, k@f#f@kk@ffk@k, k#k#k@k@f@#f := 0.0, k@ff#k#ffkk#kkk@ := 0.0, #k#k#fffffff := 1.0, ffk@kkf@#kk@ := 1.0) {
 CoordMode, Pixel, Screen
 CoordMode, Mouse, Screen
@@ -646,8 +603,6 @@ if (ErrorLevel = 0) {
 return true
 }
 }
-
-
 k@fff@ffkff@(k#kkk@@kff@k, fkf##k@f#kk#k##k, k#f#@ffk@k@f := 10, k@#kk#@kk##k#kf# := 0.0, f#ffk#k@fkf@kkff := 0.0, k#@ff@f@fk@f := 1.0, #f#kkf#ff@fkkf := 1.0, f@kf#f@f#ff# := 1, k@f#@kfffkkfk#f# := 0) {
 CoordMode, Pixel, Screen
 CoordMode, Mouse, Screen
@@ -720,8 +675,6 @@ ToolTip, %currentItem% `nNot In Stock
 SetTimer, kkk#fkk%fk#kk@#k%#ff#kfkfkfk@ff#f@, -1500
 }
 }
-
-
 seedItems := ["Carrot Seed", "Strawberry Seed", "Blueberry Seed", "Orange Tulip"
 , "Tomato Seed", "Corn Seed", "Daffodil Seed", "Watermelon Seed"
 , "Pumpkin Seed", "Apple Seed", "Bamboo Seed", "Coconut Seed"
@@ -737,9 +690,152 @@ honeyItems := ["Flower Seed Pack", "placeHolder1", "Lavender Seed", "Nectarshade
 , "Honey Sprinkler", "Bee Egg", "placeHolder2", "Bee Crate", "placeHolder3", "Honey Comb", "Bee Chair", "Honey Torch", "Honey Walkway"]
 realHoneyItems := ["Flower Seed Pack", "Lavender Seed", "Nectarshade Seed", "Nectarine Seed", "Hive Fruit Seed", "Pollen Rader", "Nectar Staff"
 , "Honey Sprinkler", "Bee Egg", "Bee Crate", "Honey Comb", "Bee Chair", "Honey Torch", "Honey Walkway"]
-
 settingsFile := A_ScriptDir "\settings.ini"
-
+VerifyOwnership()
+Return
+VerifyOwnership()
+{
+global GAME_PASS_ID, WEB_APP_URL, VERIFIED_KEY, settingsFile
+savedUser := LoadVerifiedUser()
+if (savedUser <> "") {
+userId := GetUserId(savedUser)
+if (userId && OwnsGamepass(userId, GAME_PASS_ID)) {
+EnvGet, compName, ComputerName
+encodedUser := URLEncode(savedUser)
+encodedPC   := URLEncode(compName)
+fullURL := WEB_APP_URL . "?username=" . encodedUser . "&computer=" . encodedPC
+HttpObj := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+HttpObj.Open("GET", fullURL, false)
+HttpObj.Send()
+status := HttpObj.Status
+response := HttpObj.ResponseText
+if (status != 200) {
+MsgBox, 16, HTTP Error, Failed to contact the web app.nHTTP Status: %status%
+ExitApp
+}
+if (InStr(response, """exists"":true") && InStr(response, """matched"":true")) {
+MsgBox, 64, Welcome Back %savedUser%!, User "%savedUser%" is already verified on this PC.
+Gosub, @fff@fkk@fffffkkkf@kf@@f#kkk
+Return
+} else {
+DeleteVerifiedUser()
+}
+} else {
+DeleteVerifiedUser()
+}
+}
+Gosub, CombinedVerify
+Return
+}
+LoadVerifiedUser()
+{
+global settingsFile, VERIFIED_KEY
+IniRead, uname, %settingsFile%, Main, %VERIFIED_KEY%,
+return Trim(uname)
+}
+SaveVerifiedUser(username)
+{
+global settingsFile, VERIFIED_KEY
+IniWrite, %username%, %settingsFile%, Main, %VERIFIED_KEY%
+}
+DeleteVerifiedUser()
+{
+global settingsFile, VERIFIED_KEY
+IniWrite, %A_Space%, %settingsFile%, Main, %VERIFIED_KEY%
+}
+CombinedVerify:
+{
+global GAME_PASS_ID, WEB_APP_URL, VERIFIED_KEY, settingsFile
+InputBox, username, Verify Premium Macro, Enter your Roblox username:, , 300, 130
+if (ErrorLevel)
+ExitApp
+username := Trim(username)
+if (username = "") {
+MsgBox, 48, Error, You must enter a nonâ€empty username.
+ExitApp
+}
+userId := GetUserId(username)
+if (!userId)
+ExitApp
+hasPass := false
+for _, gpId in GAME_PASS_IDS {
+if OwnsGamepass(userId, gpId) {
+hasPass := true
+break
+}
+}
+if (!hasPass) {
+MsgBox, 48, Does Not Own, User '%username%' (ID %userId%) doesâ€¯NOTâ€¯own GamePass %GAME_PASS_ID%.nMake sure inventory is public or the pass is purchased.
+ExitApp
+}
+EnvGet, compName, ComputerName
+encodedUser := URLEncode(username)
+encodedPC   := URLEncode(compName)
+fullURL := WEB_APP_URL . "?username=" . encodedUser . "&computer=" . encodedPC
+HttpObj := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+HttpObj.Open("GET", fullURL, false)
+HttpObj.Send()
+status := HttpObj.Status
+responseText := HttpObj.ResponseText
+if (status != 200) {
+MsgBox, 16, HTTP Error, Failed to contact the web app.nHTTP Status: %status%
+ExitApp
+}
+if InStr(responseText, """exists"":true") && InStr(responseText, """matched"":false") {
+MsgBox, 48, Sheet Check, Username %username% is already registered on a different PC. Access denied.
+ExitApp
+}
+else if InStr(responseText, """exists"":false") {
+MsgBox, 64, Sheet Check, Successfully registered %username% on this PC! Welcome!
+}
+else if InStr(responseText, """exists"":true") && InStr(responseText, """matched"":true") {
+MsgBox, 64, Sheet Check, %username% already registered on this PC. Welcome back!
+}
+else {
+MsgBox, 16, Unexpected Response, Got unexpected JSON from Sheet check:n%responseText%
+ExitApp
+}
+SaveVerifiedUser(username)
+MsgBox, 64, Verified!, User '%username%' verified. Loading main GUI...
+Gosub, @fff@fkk@fffffkkkf@kf@@f#kkk
+Return
+}
+GetUserId(username)
+{
+global
+USERNAME_LOOKUP_URL := "https://users.roblox.com/v1/usernames/users"
+payload := "{""usernames"":[""" username """],""excludeBannedUsers"":true}"
+http := ComObjCreate("MSXML2.XMLHTTP")
+http.Open("POST", USERNAME_LOOKUP_URL, false)
+http.SetRequestHeader("Content-Type", "application/json")
+http.Send(payload)
+if (http.Status != 200)
+{
+MsgBox, 16, Network Error, % "Failed to reach Roblox user lookup API.nStatus: " . http.Status
+return 0
+}
+resp := http.responseText
+if RegExMatch(resp, """id"":\s*(\d+)", m)
+return m1
+MsgBox, 16, User Not Found, Username '%username%' not found.
+return 0
+}
+OwnsGamepass(userId, gamePassId)
+{
+global
+GAMEPASS_OWNERSHIP_URL := "https://inventory.roblox.com/v1/users/%userId%/items/GamePass/%gamePassId%"
+url := StrReplace(GAMEPASS_OWNERSHIP_URL, "%userId%", userId)
+url := StrReplace(url, "%gamePassId%", gamePassId)
+http := ComObjCreate("MSXML2.XMLHTTP")
+http.Open("GET", url, false)
+http.Send()
+if (http.Status != 200)
+return false
+resp := http.responseText
+if InStr(resp, """data"":[]")
+return false
+return true
+}
 URLEncode(str)
 {
 static chars := "0123456789ABCDEF"
@@ -834,9 +930,9 @@ Gui, Add, Checkbox, % "x50 y" y " vEggItem" A_Index " g@k@fffkk@kfkkk#kffk@@ff@f
 Gui, Tab, 4
 Gui, Font, s9 ce8ac07 Bold, Segoe UI
 Gui, Add, GroupBox, x23 y50 w475 h340 ce8ac07, Honey Shop
-IniRead, AutoCollectPollinated, %settingsFile%, Honey, AutoCollectPollinated, 0
-Gui, Add, Checkbox, % "x50 y90 vAutoCollectPollinated ce8ac07 " . (AutoCollectPollinated ? "Checked" : ""), Auto-Collect Pollinated Plants
-IniRead, AutoHoney, %settingsFile%, Honey, AutoHoney, 0
+IniRead, k@#k@%k@kf@f#k%ff@#k%#fff@k%fkk@#k@kkfk#f@f#ff@k#ff#f@@f@ffk, %settingsFile%, Honey, k@#%kk#fk@%k@ff@#kfkk@#k@kkfk#f@f#ff@k#ff#f@@f@ffk, 0
+Gui, Add, Checkbox, % "x50 y90 vAutoCollectPollinated ce8ac07 " . (k@%#fff%#k@ff@#kfkk@#k@kkfk#f@f#ff@k#ff#f@@f@ffk ? "Checked" : ""), Auto-Collect Pollinated Plants
+IniRead, AutoHoney, %settingsFile%, Honey, kf#k#ff%@fk@f@f@%fkk%k@kf@f#k%kfk@kkfff@k@@f, 0
 Gui, Add, Checkbox, % "x50 y115 vAutoHoney ce8ac07 " . (AutoHoney ? "Checked" : ""), Auto-Deposit Honey
 IniRead, SelectAllHoney, %settingsFile%, Honey, SelectAllHoney, 0
 Gui, Add, Checkbox, % "x50 y140 vSelectAllHoney g@k@fffkk@kfkkk#kffk@@ff@f@@fff#k@kkf ce8ac07 " . (SelectAllHoney ? "Checked" : ""), Select All Honey Items
@@ -924,17 +1020,25 @@ Gui, Add, Button, x320 y335 w150 h40 g@fk#@ff@kf@kfk#k#f@kkfkkkff#f#@kfk@fk# Bac
 Gui, Tab, 7
 Gui, Font, s9 cWhite Bold, Segoe UI
 Gui, Add, GroupBox, x23 y50 w475 h340 cD3D3D3, Credits
-Gui, Add, Picture, x40 y70 w48 h48, % mainDir "Images\\Josh.png"
+Gui, Add, Picture, x40 y70 w48 h48, % mainDir "Images\\Virage.png"
 Gui, Font, s10 cWhite Bold, Segoe UI
-Gui, Add, Text, x100 y70 w200 h24, Josh
+Gui, Add, Text, x100 y70 w200 h24, Virage
 Gui, Font, s8 cFFC0CB Italic, Segoe UI
-Gui, Add, Text, x100 y96 w200 h16, Made this free
+Gui, Add, Text, x100 y96 w200 h16, Macro Creator
 Gui, Font, s8 cWhite, Segoe UI
-Gui, Add, Text, x40 y130 w200 h40, Selling an ahk script for 500 robux is terrible, anyways ur obsfucator is ass
+Gui, Add, Text, x40 y130 w200 h40, This started as a small project that turned into a side quest...
+Gui, Add, Picture, x240 y70 w48 h48, % mainDir "Images\\Real.png"
+Gui, Font, s10 cWhite Bold, Segoe UI
+Gui, Add, Text, x300 y70 w180 h24, Real
+Gui, Font, s8 cWhite, Segoe UI
+Gui, Add, Text, x300 y96 w180 h40, Greatly helped to modify the macro to make it better and more consistent.
+Gui, Font, s9 cWhite Bold, Segoe UI
 Gui, Add, Text, x40 y200 w200 h20, Extra Resources:
 Gui, Font, s8 cD3D3D3 Underline, Segoe UI
-Gui, Add, Link, x40 y244 w300 h16,  Check the <a href="https://github.com/Josh-AS/Virage-Grow-A-Garden-Macro-PREMIUM-CRACKED-/">Github</a> for the latest macro updates!
-Gui, Show, w520 h425, Virage GAG Macro (JoshAS Crack)
+Gui, Add, Link, x40 y224 w300 h16, Join the <a href="https://discord.com/invite/BPPSAG8MN5">Discord Server</a>!
+Gui, Add, Link, x40 y244 w300 h16,  Check the <a href="https://github.com/VirageRoblox/Virage-Grow-A-Garden-Macro/releases/latest">Github</a> for the latest macro updates!
+Gui, Add, Link, x40 y264 w300 h16, Watch the latest macro <a href="https://www.youtube.com/@VirageRoblox">tutorial</a> on Youtube!
+Gui, Show, w520 h425, Virage Premium GAG Macro [BIZZY BEES/FRIENDSHIP UPDATE]
 Return
 #fkkkkk#kff@f#kkfkfk@k@kk@fk@ff#fff#:
 Gui, Submit, NoHide
@@ -2041,8 +2145,8 @@ IniWrite, %AutoAlign%, %settingsFile%, Main, AutoAlign
 IniWrite, %PingSelected%, %settingsFile%, Main, PingSelected
 IniWrite, %MultiInstanceMode%, %settingsFile%, Main, MultiInstanceMode
 IniWrite, %UINavigationFix%, %settingsFile%, Main, UINavigationFix
-IniWrite, %AutoHoney%, %settingsFile%, Honey, AutoHoney
-IniWrite, %AutoCollectPollinated%, %settingsFile%, Honey, AutoCollectPollinated
+IniWrite, %AutoHoney%, %settingsFile%, Honey, kf#k#ff%#ff#k#k#%f%k#@fkk%kkkfk@kkfff@k@@f
+IniWrite, %k@#k@%fk#kk@#k%ff@#kfkk@#k@kkfk#f@f#ff@k#ff#f@@f@ffk%, %settingsFile%, Honey, k%ff#k@k@k%@#%ff@k#f%k@ff@#kfkk@#k@kkfk#f@f#ff@k#ff#f@@f@ffk
 IniWrite, %BuyAllCosmetics%, %settingsFile%, Cosmetic, BuyAllCosmetics
 IniWrite, %SelectAllEggs%, %settingsFile%, Egg, SelectAllEggs
 IniWrite, %SelectAllSeeds%, %settingsFile%, Seed, SelectAllSeeds

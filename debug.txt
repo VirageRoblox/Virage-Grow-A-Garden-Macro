@@ -1,0 +1,2059 @@
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+Searching seedItems for Ember Lily
+found Ember Lily at index 21
+Searching seedItems for 
+index: 8
+previusIndex: 1
+currentarray: seedItems
+sendCount: 7
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+index: 9
+previusIndex: 8
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+index: 10
+previusIndex: 9
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+index: 11
+previusIndex: 10
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+index: 12
+previusIndex: 11
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+index: 14
+previusIndex: 12
+currentarray: seedItems
+sendCount: 2
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+index: 15
+previusIndex: 14
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+index: 16
+previusIndex: 15
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+index: 17
+previusIndex: 16
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+index: 18
+previusIndex: 17
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+index: 19
+previusIndex: 18
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+index: 20
+previusIndex: 19
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+index: 21
+previusIndex: 20
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+Searching seedItems for Ember Lily
+found Ember Lily at index 21
+Searching seedItems for 
+index: 8
+previusIndex: 1
+currentarray: seedItems
+sendCount: 7
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+index: 9
+previusIndex: 8
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+index: 10
+previusIndex: 9
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+index: 11
+previusIndex: 10
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+index: 12
+previusIndex: 11
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+index: 14
+previusIndex: 12
+currentarray: seedItems
+sendCount: 2
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+index: 15
+previusIndex: 14
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+index: 16
+previusIndex: 15
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+index: 17
+previusIndex: 16
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+index: 18
+previusIndex: 17
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+index: 19
+previusIndex: 18
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+index: 20
+previusIndex: 19
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+index: 21
+previusIndex: 20
+currentarray: seedItems
+sendCount: 1
+Searching gearItems for Recall Wrench
+found Recall Wrench at index 3
+Searching gearItems for Basic Sprinkler
+found Basic Sprinkler at index 4
+Searching gearItems for Advanced Sprinkler
+found Advanced Sprinkler at index 5
+Searching gearItems for Godly Sprinkler
+found Godly Sprinkler at index 6
+Searching gearItems for Lightning Rod
+found Lightning Rod at index 7
+Searching gearItems for Master Sprinkler
+found Master Sprinkler at index 8
+Searching gearItems for Friendship Pot
+found Friendship Pot at index 11
+Searching gearItems for 
+index: 3
+previusIndex: 1
+currentarray: gearItems
+sendCount: 2
+Searching gearItems for Recall Wrench
+found Recall Wrench at index 3
+index: 4
+previusIndex: 3
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Basic Sprinkler
+found Basic Sprinkler at index 4
+index: 5
+previusIndex: 4
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Advanced Sprinkler
+found Advanced Sprinkler at index 5
+index: 6
+previusIndex: 5
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Godly Sprinkler
+found Godly Sprinkler at index 6
+index: 7
+previusIndex: 6
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Lightning Rod
+found Lightning Rod at index 7
+index: 8
+previusIndex: 7
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Master Sprinkler
+found Master Sprinkler at index 8
+index: 11
+previusIndex: 8
+currentarray: gearItems
+sendCount: 3
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+Searching seedItems for Ember Lily
+found Ember Lily at index 21
+Searching seedItems for 
+index: 8
+previusIndex: 1
+currentarray: seedItems
+sendCount: 7
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+index: 9
+previusIndex: 8
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+index: 10
+previusIndex: 9
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+index: 11
+previusIndex: 10
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+index: 12
+previusIndex: 11
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+index: 14
+previusIndex: 12
+currentarray: seedItems
+sendCount: 2
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+index: 15
+previusIndex: 14
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+index: 16
+previusIndex: 15
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+index: 17
+previusIndex: 16
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+index: 18
+previusIndex: 17
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+index: 19
+previusIndex: 18
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+index: 20
+previusIndex: 19
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+index: 21
+previusIndex: 20
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+Searching seedItems for Ember Lily
+found Ember Lily at index 21
+Searching seedItems for 
+index: 8
+previusIndex: 1
+currentarray: seedItems
+sendCount: 7
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+index: 9
+previusIndex: 8
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+index: 10
+previusIndex: 9
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+index: 11
+previusIndex: 10
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+index: 12
+previusIndex: 11
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+index: 14
+previusIndex: 12
+currentarray: seedItems
+sendCount: 2
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+index: 15
+previusIndex: 14
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+index: 16
+previusIndex: 15
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+index: 17
+previusIndex: 16
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+index: 18
+previusIndex: 17
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+index: 19
+previusIndex: 18
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+index: 20
+previusIndex: 19
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+index: 21
+previusIndex: 20
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+Searching seedItems for Ember Lily
+found Ember Lily at index 21
+Searching seedItems for 
+index: 8
+previusIndex: 1
+currentarray: seedItems
+sendCount: 7
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+index: 9
+previusIndex: 8
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+index: 10
+previusIndex: 9
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+index: 11
+previusIndex: 10
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+index: 12
+previusIndex: 11
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+index: 14
+previusIndex: 12
+currentarray: seedItems
+sendCount: 2
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+index: 15
+previusIndex: 14
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+index: 16
+previusIndex: 15
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+index: 17
+previusIndex: 16
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+index: 18
+previusIndex: 17
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+index: 19
+previusIndex: 18
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+index: 20
+previusIndex: 19
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+index: 21
+previusIndex: 20
+currentarray: seedItems
+sendCount: 1
+Searching gearItems for Recall Wrench
+found Recall Wrench at index 3
+Searching gearItems for Basic Sprinkler
+found Basic Sprinkler at index 4
+Searching gearItems for Advanced Sprinkler
+found Advanced Sprinkler at index 5
+Searching gearItems for Godly Sprinkler
+found Godly Sprinkler at index 6
+Searching gearItems for Lightning Rod
+found Lightning Rod at index 7
+Searching gearItems for Master Sprinkler
+found Master Sprinkler at index 8
+Searching gearItems for Friendship Pot
+found Friendship Pot at index 11
+Searching gearItems for 
+index: 3
+previusIndex: 1
+currentarray: gearItems
+sendCount: 2
+Searching gearItems for Recall Wrench
+found Recall Wrench at index 3
+index: 4
+previusIndex: 3
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Basic Sprinkler
+found Basic Sprinkler at index 4
+index: 5
+previusIndex: 4
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Advanced Sprinkler
+found Advanced Sprinkler at index 5
+index: 6
+previusIndex: 5
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Godly Sprinkler
+found Godly Sprinkler at index 6
+index: 7
+previusIndex: 6
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Lightning Rod
+found Lightning Rod at index 7
+index: 8
+previusIndex: 7
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Master Sprinkler
+found Master Sprinkler at index 8
+index: 11
+previusIndex: 8
+currentarray: gearItems
+sendCount: 3
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+Searching seedItems for Ember Lily
+found Ember Lily at index 21
+Searching seedItems for 
+index: 8
+previusIndex: 1
+currentarray: seedItems
+sendCount: 7
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+index: 9
+previusIndex: 8
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+index: 10
+previusIndex: 9
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+index: 11
+previusIndex: 10
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+index: 12
+previusIndex: 11
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+index: 13
+previusIndex: 12
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+index: 14
+previusIndex: 13
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+index: 15
+previusIndex: 14
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+index: 16
+previusIndex: 15
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+index: 17
+previusIndex: 16
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+index: 18
+previusIndex: 17
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+index: 19
+previusIndex: 18
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+index: 20
+previusIndex: 19
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+index: 21
+previusIndex: 20
+currentarray: seedItems
+sendCount: 1
+Searching gearItems for Watering Can
+found Watering Can at index 1
+Searching gearItems for Trowel
+found Trowel at index 2
+Searching gearItems for Recall Wrench
+found Recall Wrench at index 3
+Searching gearItems for Basic Sprinkler
+found Basic Sprinkler at index 4
+Searching gearItems for Advanced Sprinkler
+found Advanced Sprinkler at index 5
+Searching gearItems for Godly Sprinkler
+found Godly Sprinkler at index 6
+Searching gearItems for Lightning Rod
+found Lightning Rod at index 7
+Searching gearItems for Master Sprinkler
+found Master Sprinkler at index 8
+Searching gearItems for Friendship Pot
+found Friendship Pot at index 11
+Searching gearItems for 
+index: 1
+previusIndex: 1
+currentarray: gearItems
+sendCount: 0
+Searching gearItems for Watering Can
+found Watering Can at index 1
+index: 2
+previusIndex: 1
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Trowel
+found Trowel at index 2
+index: 3
+previusIndex: 2
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Recall Wrench
+found Recall Wrench at index 3
+index: 4
+previusIndex: 3
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Basic Sprinkler
+found Basic Sprinkler at index 4
+index: 5
+previusIndex: 4
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Advanced Sprinkler
+found Advanced Sprinkler at index 5
+index: 6
+previusIndex: 5
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Godly Sprinkler
+found Godly Sprinkler at index 6
+index: 7
+previusIndex: 6
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Lightning Rod
+found Lightning Rod at index 7
+index: 8
+previusIndex: 7
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Master Sprinkler
+found Master Sprinkler at index 8
+index: 11
+previusIndex: 8
+currentarray: gearItems
+sendCount: 3
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+Searching seedItems for Ember Lily
+found Ember Lily at index 21
+Searching seedItems for 
+index: 8
+previusIndex: 1
+currentarray: seedItems
+sendCount: 7
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+index: 9
+previusIndex: 8
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+index: 10
+previusIndex: 9
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+index: 11
+previusIndex: 10
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+index: 12
+previusIndex: 11
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+index: 13
+previusIndex: 12
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+index: 14
+previusIndex: 13
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+index: 15
+previusIndex: 14
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+index: 16
+previusIndex: 15
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+index: 17
+previusIndex: 16
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+index: 18
+previusIndex: 17
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+index: 19
+previusIndex: 18
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+index: 20
+previusIndex: 19
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+index: 21
+previusIndex: 20
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+Searching seedItems for Ember Lily
+found Ember Lily at index 21
+Searching seedItems for 
+index: 8
+previusIndex: 1
+currentarray: seedItems
+sendCount: 7
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+index: 9
+previusIndex: 8
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+index: 10
+previusIndex: 9
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+index: 11
+previusIndex: 10
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+index: 12
+previusIndex: 11
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+index: 13
+previusIndex: 12
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+index: 14
+previusIndex: 13
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+index: 15
+previusIndex: 14
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+index: 16
+previusIndex: 15
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+index: 17
+previusIndex: 16
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+index: 18
+previusIndex: 17
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+index: 19
+previusIndex: 18
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+index: 20
+previusIndex: 19
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+index: 21
+previusIndex: 20
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+Searching seedItems for Ember Lily
+found Ember Lily at index 21
+Searching seedItems for 
+index: 8
+previusIndex: 1
+currentarray: seedItems
+sendCount: 7
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+index: 9
+previusIndex: 8
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+index: 10
+previusIndex: 9
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+index: 11
+previusIndex: 10
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+index: 12
+previusIndex: 11
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+index: 13
+previusIndex: 12
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+index: 14
+previusIndex: 13
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+index: 15
+previusIndex: 14
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+index: 16
+previusIndex: 15
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+index: 17
+previusIndex: 16
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+index: 18
+previusIndex: 17
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+index: 19
+previusIndex: 18
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+index: 20
+previusIndex: 19
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+index: 21
+previusIndex: 20
+currentarray: seedItems
+sendCount: 1
+Searching gearItems for Watering Can
+found Watering Can at index 1
+Searching gearItems for Trowel
+found Trowel at index 2
+Searching gearItems for Recall Wrench
+found Recall Wrench at index 3
+Searching gearItems for Basic Sprinkler
+found Basic Sprinkler at index 4
+Searching gearItems for Advanced Sprinkler
+found Advanced Sprinkler at index 5
+Searching gearItems for Godly Sprinkler
+found Godly Sprinkler at index 6
+Searching gearItems for Lightning Rod
+found Lightning Rod at index 7
+Searching gearItems for Master Sprinkler
+found Master Sprinkler at index 8
+Searching gearItems for Friendship Pot
+found Friendship Pot at index 11
+Searching gearItems for 
+index: 1
+previusIndex: 1
+currentarray: gearItems
+sendCount: 0
+Searching gearItems for Watering Can
+found Watering Can at index 1
+index: 2
+previusIndex: 1
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Trowel
+found Trowel at index 2
+index: 3
+previusIndex: 2
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Recall Wrench
+found Recall Wrench at index 3
+index: 4
+previusIndex: 3
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Basic Sprinkler
+found Basic Sprinkler at index 4
+index: 5
+previusIndex: 4
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Advanced Sprinkler
+found Advanced Sprinkler at index 5
+index: 6
+previusIndex: 5
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Godly Sprinkler
+found Godly Sprinkler at index 6
+index: 7
+previusIndex: 6
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Lightning Rod
+found Lightning Rod at index 7
+index: 8
+previusIndex: 7
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Master Sprinkler
+found Master Sprinkler at index 8
+index: 11
+previusIndex: 8
+currentarray: gearItems
+sendCount: 3
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+Searching seedItems for Ember Lily
+found Ember Lily at index 21
+Searching seedItems for 
+index: 8
+previusIndex: 1
+currentarray: seedItems
+sendCount: 7
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+index: 9
+previusIndex: 8
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+index: 10
+previusIndex: 9
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+index: 11
+previusIndex: 10
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+index: 12
+previusIndex: 11
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+index: 13
+previusIndex: 12
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+index: 14
+previusIndex: 13
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+index: 15
+previusIndex: 14
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+index: 16
+previusIndex: 15
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+index: 17
+previusIndex: 16
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+index: 18
+previusIndex: 17
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+index: 19
+previusIndex: 18
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+index: 20
+previusIndex: 19
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+index: 21
+previusIndex: 20
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+Searching seedItems for Ember Lily
+found Ember Lily at index 21
+Searching seedItems for 
+index: 8
+previusIndex: 1
+currentarray: seedItems
+sendCount: 7
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+index: 9
+previusIndex: 8
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+index: 10
+previusIndex: 9
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+index: 11
+previusIndex: 10
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+index: 12
+previusIndex: 11
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+index: 13
+previusIndex: 12
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+index: 14
+previusIndex: 13
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+index: 15
+previusIndex: 14
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+index: 16
+previusIndex: 15
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+index: 17
+previusIndex: 16
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+index: 18
+previusIndex: 17
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+index: 19
+previusIndex: 18
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+index: 20
+previusIndex: 19
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+index: 21
+previusIndex: 20
+currentarray: seedItems
+sendCount: 1
+Searching gearItems for Watering Can
+found Watering Can at index 1
+Searching gearItems for Trowel
+found Trowel at index 2
+Searching gearItems for Recall Wrench
+found Recall Wrench at index 3
+Searching gearItems for Basic Sprinkler
+found Basic Sprinkler at index 4
+Searching gearItems for Advanced Sprinkler
+found Advanced Sprinkler at index 5
+Searching gearItems for Godly Sprinkler
+found Godly Sprinkler at index 6
+Searching gearItems for Lightning Rod
+found Lightning Rod at index 7
+Searching gearItems for Master Sprinkler
+found Master Sprinkler at index 8
+Searching gearItems for Friendship Pot
+found Friendship Pot at index 11
+Searching gearItems for 
+index: 1
+previusIndex: 1
+currentarray: gearItems
+sendCount: 0
+Searching gearItems for Watering Can
+found Watering Can at index 1
+index: 2
+previusIndex: 1
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Trowel
+found Trowel at index 2
+index: 3
+previusIndex: 2
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Recall Wrench
+found Recall Wrench at index 3
+index: 4
+previusIndex: 3
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Basic Sprinkler
+found Basic Sprinkler at index 4
+index: 5
+previusIndex: 4
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Advanced Sprinkler
+found Advanced Sprinkler at index 5
+index: 6
+previusIndex: 5
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Godly Sprinkler
+found Godly Sprinkler at index 6
+index: 7
+previusIndex: 6
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Lightning Rod
+found Lightning Rod at index 7
+index: 8
+previusIndex: 7
+currentarray: gearItems
+sendCount: 1
+Searching gearItems for Master Sprinkler
+found Master Sprinkler at index 8
+index: 11
+previusIndex: 8
+currentarray: gearItems
+sendCount: 3
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+Searching seedItems for Ember Lily
+found Ember Lily at index 21
+Searching seedItems for 
+index: 8
+previusIndex: 1
+currentarray: seedItems
+sendCount: 7
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+index: 9
+previusIndex: 8
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+index: 10
+previusIndex: 9
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+index: 11
+previusIndex: 10
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+index: 12
+previusIndex: 11
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+index: 13
+previusIndex: 12
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+index: 14
+previusIndex: 13
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+index: 15
+previusIndex: 14
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+index: 16
+previusIndex: 15
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+index: 17
+previusIndex: 16
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+index: 18
+previusIndex: 17
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+index: 19
+previusIndex: 18
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+index: 20
+previusIndex: 19
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+index: 21
+previusIndex: 20
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+Searching seedItems for Ember Lily
+found Ember Lily at index 21
+Searching seedItems for 
+index: 8
+previusIndex: 1
+currentarray: seedItems
+sendCount: 7
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+index: 9
+previusIndex: 8
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+index: 10
+previusIndex: 9
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+index: 11
+previusIndex: 10
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+index: 12
+previusIndex: 11
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+index: 13
+previusIndex: 12
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+index: 14
+previusIndex: 13
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+index: 15
+previusIndex: 14
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+index: 16
+previusIndex: 15
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+index: 17
+previusIndex: 16
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+index: 18
+previusIndex: 17
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+index: 19
+previusIndex: 18
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+index: 20
+previusIndex: 19
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+index: 21
+previusIndex: 20
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+Searching seedItems for Ember Lily
+found Ember Lily at index 21
+Searching seedItems for 
+index: 8
+previusIndex: 1
+currentarray: seedItems
+sendCount: 7
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+index: 9
+previusIndex: 8
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+index: 10
+previusIndex: 9
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+index: 11
+previusIndex: 10
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+index: 12
+previusIndex: 11
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+index: 13
+previusIndex: 12
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+index: 14
+previusIndex: 13
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+index: 15
+previusIndex: 14
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+index: 16
+previusIndex: 15
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+index: 17
+previusIndex: 16
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+index: 18
+previusIndex: 17
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+index: 19
+previusIndex: 18
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+index: 20
+previusIndex: 19
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+index: 21
+previusIndex: 20
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+Searching seedItems for Ember Lily
+found Ember Lily at index 21
+Searching seedItems for 
+index: 8
+previusIndex: 1
+currentarray: seedItems
+sendCount: 7
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+index: 9
+previusIndex: 8
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+index: 10
+previusIndex: 9
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+index: 11
+previusIndex: 10
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+index: 12
+previusIndex: 11
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+index: 13
+previusIndex: 12
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+index: 14
+previusIndex: 13
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+index: 15
+previusIndex: 14
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+index: 16
+previusIndex: 15
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+index: 17
+previusIndex: 16
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+index: 18
+previusIndex: 17
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+index: 19
+previusIndex: 18
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+index: 20
+previusIndex: 19
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+index: 21
+previusIndex: 20
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+Searching seedItems for Ember Lily
+found Ember Lily at index 21
+Searching seedItems for 
+index: 8
+previusIndex: 1
+currentarray: seedItems
+sendCount: 7
+Searching seedItems for Watermelon Seed
+found Watermelon Seed at index 8
+index: 9
+previusIndex: 8
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pumpkin Seed
+found Pumpkin Seed at index 9
+index: 10
+previusIndex: 9
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Apple Seed
+found Apple Seed at index 10
+index: 11
+previusIndex: 10
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Bamboo Seed
+found Bamboo Seed at index 11
+index: 12
+previusIndex: 11
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Coconut Seed
+found Coconut Seed at index 12
+index: 13
+previusIndex: 12
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cactus Seed
+found Cactus Seed at index 13
+index: 14
+previusIndex: 13
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Dragon Fruit Seed
+found Dragon Fruit Seed at index 14
+index: 15
+previusIndex: 14
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mango Seed
+found Mango Seed at index 15
+index: 16
+previusIndex: 15
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Grape Seed
+found Grape Seed at index 16
+index: 17
+previusIndex: 16
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Mushroom Seed
+found Mushroom Seed at index 17
+index: 18
+previusIndex: 17
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Pepper Seed
+found Pepper Seed at index 18
+index: 19
+previusIndex: 18
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Cacao Seed
+found Cacao Seed at index 19
+index: 20
+previusIndex: 19
+currentarray: seedItems
+sendCount: 1
+Searching seedItems for Beanstalk Seed
+found Beanstalk Seed at index 20
+index: 21
+previusIndex: 20
+currentarray: seedItems
+sendCount: 1
