@@ -382,41 +382,45 @@ return false
 
 
 InventoryItemSearch(itemP := "nil") {
-global UINavigationFix
-if(itemP = "nil") {
-Return
-}
-if (UINavigationFix) {
-NavigateUI("150524150505305", 0)
-TypeString(itemP)
-Sleep, 50
-if (itemP = "recall") {
-NavigateUI("4335505541555055", 1, 1)
-}
-else if (itemP = "pollinated") {
-NavigateUI("22115505544444444441111111155055", 1, 1)
-}
-else if (itemP = "pollen") {
-NavigateUI("2211550554444444444111111155055", 1, 1)
-}
-NavigateUI(10)
-}
-else {
-NavigateUI("1011143333333333333333333311440", 0)
-Sleep, 50
-TypeString(itemP)
-Sleep, 50
-if (itemP = "recall") {
-NavigateUI("2211550554155055", 1, 1)
-}
-else if (itemP = "pollinated") {
-NavigateUI("22115505544444444444444444444441111111155055", 1, 1)
-}
-else if (itemP = "pollen") {
-NavigateUI("2211550554444444444111111155055", 1, 1)
-}
-NavigateUI(10)
-}
+    global UINavigationFix
+    if(itemP = "nil") {
+        Return
+    }
+
+    if (UINavigationFix) {
+        NavigateUI("150524150505305", 0)
+        TypeString(itemP)
+        Sleep, 50
+        if (itemP = "recall") {
+            NavigateUI("4335505541555055", 1, 1)
+        }
+        else if (itemP = "pollinated") {
+            NavigateUI("22115505544444444441111111155055", 1, 1)
+        }
+        else if (itemP = "pollen") {
+            NavigateUI("22115505544444444441155055", 1, 1)
+        }
+
+        NavigateUI(10)
+    }
+    else {
+        NavigateUI("1011143333333333333333333311440", 0)
+        Sleep, 50
+        TypeString(itemP)
+        Sleep, 50
+
+        if (itemP = "recall") {
+            NavigateUI("2211550554155055", 1, 1)
+        }
+        else if (itemP = "pollinated") {
+            NavigateUI("22115505544444444444444444444441111111155055", 1, 1)
+        }
+        else if (itemP = "pollen") {
+            NavigateUI("22115505544444444441155055", 1, 1, , , 200)
+        }
+
+        NavigateUI(10)
+    }
 }
 
 
@@ -441,46 +445,49 @@ Return
 
 
 ShopDialogClick(shopTypeP) {
-Loop, 5 {
-Send, {WheelUp}
-Sleep, 20
-}
-Sleep, 500
-if (shopTypeP = "gear") {
-ClickRelativeToRobloxWindow(midX + 0.4, midY - 0.1)
-}
-else if (shopTypeP = "honey") {
-ClickRelativeToRobloxWindow(midX + 0.4, midY)
-}
-Sleep, 500
-Loop, 5 {
-Send, {WheelDown}
-Sleep, 20
-}
-ClickRelativeToRobloxWindow(midX, midY)
+    MoveRelativeToRobloxWindow(midX, midY)
+    Sleep, 100
+    Loop, 4 {
+        Send, {WheelUp}
+        Sleep, 20
+    }
+        Sleep, 300
+    if (shopTypeP = "gear") {
+        ClickRelativeToRobloxWindow(midX + 0.4, midY - 0.1)
+    }
+    else if (shopTypeP = "honey") {
+        ClickRelativeToRobloxWindow(midX + 0.4, midY)
+    }
+        Sleep, 300
+    Loop, 4 {
+        Send, {WheelDown}
+        Sleep, 20
+    }
+    Sleep, 100
+    ClickRelativeToRobloxWindow(midX, midY)
 }
 
 
 HotbarNavigate(selectP := 0, deselectP := 0, keyP := "nil") {
-if ((selectP = 1 && deselectP = 1) || (selectP = 0 && deselectP = 0) || keyP = "nil") {
-Return
-}
-if (deselectP) {
-Send, {%keyP%}
-Sleep, 200
-Send, {%keyP%}
-}
-else if (selectP) {
-Send, {%keyP%}
-}
+    if ((selectP = 1 && deselectP = 1) || (selectP = 0 && deselectP = 0) || keyP = "nil") {
+        Return
+    }
+    if (deselectP) {
+        Send, {%keyP%}
+        Sleep, 200
+        Send, {%keyP%}
+    }
+    else if (selectP) {
+        Send, {%keyP%}
+    }
 }
 
 
-SpamEscape() {
-Loop, 4 {
-Send {Escape}
-Sleep, 100
-}
+SpamEscape(count := 4) {
+    Loop, %count% {
+        Send {Escape}
+        Sleep, 100
+    }
 }
 
 
@@ -523,7 +530,7 @@ NavigateUI("4330320", 1, 1)
 else {
 ToolTip, % "Error In Detecting " . shopTypeP
 SetTimer, HideTooltip, -1500
-SendDiscordWebhook(webhookURL, "Failed To Detect " . shopTypeP . " shopTypeP Opening [Error]" . (PingSelected ? " <@" . discordUserID . ">" : ""))
+SendDiscordWebhook(webhookURL, "Failed To Detect " . shopTypeP . " shop Opening [Error]" . (PingSelected ? " <@" . discordUserID . ">" : ""))
 NavigateUI("3332223111133322231111054105")
 }
 }
@@ -1028,7 +1035,7 @@ StartMacro:
     global lastEggShopMinute := -1
     global lastCosmeticShopHour := -1
     global lastHoneyShopMinute := -1
-    global lastDepositHoneyMinute := -1
+    global lastDepositHoneySecond := -1
     global lastCollectPollinatedHour := -1
     started := 1
     cycleFinished := 1
@@ -1193,7 +1200,7 @@ CosmeticShopAction:
 
 CollectPollinatedCycleTimer:
     if (cycleCount > 0 && currentMinute = 0 && currentHour != lastCollectPollinatedHour) {
-    lastHoneyShopHour := currentHour
+    lastCollectPollinatedHour := currentHour
     SetTimer, QueueCollectPollinatedAction, -600000
     }
     Return
@@ -1204,8 +1211,8 @@ QueueCollectPollinatedAction:
 
 CollectPollinatedAction:
     currentSection := "CollectPollinatedAction"
-    if (CollectPollinatedCycleTimer) {
-    Gosub, CollectPollinatedRoutine
+    if (AutoCollectPollinated) {
+        Gosub, CollectPollinatedRoutine
     }
     Return
 
@@ -1228,9 +1235,9 @@ HoneyShopAction:
     Return
 
 HoneyDepositCycleTimer:
-    if (cycleCount > 0 && Mod(currentMinute, 5) = 0 && currentMinute != lastDepositHoneyMinute) {
-    lastDepositHoneyMinute := currentMinute
-    SetTimer, QueueHoneyDepositAction, -8000
+    if (cycleCount > 0 && Mod(currentSecond, 45) = 0 && currentSecond != lastDepositHoneySecond) {
+        lastDepositHoneySecond := currentSecond
+        SetTimer, QueueHoneyDepositAction, -8000
     }
     Return
 
@@ -1241,7 +1248,7 @@ QueueHoneyDepositAction:
 HoneyDepositAction:
     currentSection := "HoneyDepositAction"
     if (AutoHoney) {
-    Gosub, HoneyDepositRoutine
+        Gosub, HoneyDepositRoutine
     }
     Return
 
@@ -1257,8 +1264,10 @@ ShowCycleTimers:
     gearMin := rem5sec // 60
     gearSec := Mod(rem5sec, 60)
     gearText := (gearSec < 10) ? gearMin . ":0" . gearSec : gearMin . ":" . gearSec
-    depositHoneyMin := rem5sec // 60
-    depositHoneySec := Mod(rem5sec, 60)
+    mod45 := Mod(currentSecond, 45)
+    rem45sec := (mod45 = 0) ? 45 : 45 - mod45
+    depositHoneyMin := rem45sec // 60
+    depositHoneySec := Mod(rem45sec, 60)
     depositHoneyText := (depositHoneySec < 10) ? depositHoneyMin . ":0" . depositHoneySec : depositHoneyMin . ":" . depositHoneySec
     mod30 := Mod(currentMinute, 30)
     rem30min := (mod30 = 0) ? 30 : 30 - mod30
@@ -1311,7 +1320,7 @@ ShowCycleTimers:
     if (selectedHoneyItems.Length()) {
     tooltipText .= "Honey Shop: " . honeyText . "`n"
     }
-    if (CollectPollinatedCycleTimer) {
+    if (AutoCollectPollinated) {
     tooltipText .= "Collect Pollinated: " . collectPollinatedText . "`n"
     }
     if (tooltipText != "") {
@@ -1347,8 +1356,8 @@ InitializeMacroCycles:
     }
     cosmeticAutoActive := 1
     SetTimer, CosmeticCycleTimer, 1000
-    if (CollectPollinatedCycleTimer) {
-    actionQueue.Push("CollectPollinatedAction")
+    if (AutoCollectPollinated) {
+        actionQueue.Push("CollectPollinatedAction")
     }
     collectPollinatedAutoActive := 1
     SetTimer, CollectPollinatedCycleTimer, 1000
@@ -1925,16 +1934,18 @@ HoneyDepositRoutine:
     Send, {d up}
     SleepFromSpeed(100, 500)
     Loop, 3 {
-    InventoryItemSearch("pollinated")
-    HotbarNavigate(1, 0, "9")
-    SleepFromSpeed(100, 500)
-    Loop, 2 {
-    Send {e}
-    Sleep, 200
-    }
-    depositCount++
-    SendDiscordWebhook(webhookURL, "Depositing/Collecting Honey Try #" . depositCount . ".")
-    Sleep, 1000
+        InventoryItemSearch("pollinated")
+        SpamEscape(2)
+        Sleep, 500
+        HotbarNavigate(1, 0, "9")
+        SleepFromSpeed(100, 500)
+        Loop, 2 {
+            Send {e}
+            Sleep, 200
+        }
+        depositCount++
+        SendDiscordWebhook(webhookURL, "Depositing/Collecting Honey Try #" . depositCount . ".")
+        Sleep, 1000
     }
     HotbarNavigate(0, 1, "0")
     NavigateUI(11110)
