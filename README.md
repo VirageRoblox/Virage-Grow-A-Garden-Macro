@@ -1,59 +1,12 @@
 # Virage x JoshAS: Grow a Garden Macro – Cracked Premium Edition  
-*Fully unlocked macro for Roblox's "Grow a Garden" with all paid features enabled — no paywall, no restrictions!*
+*Unlocked, fixed, and cleaned-up macro for Roblox's "Grow a Garden" — no paywall, no bloat, and no BS.*
 
-**THE ORIGINAL MACRO UPDATE HAS BROKEN A FEW THINGS, LAZY DEVELOPERS ONLY WANTING A PAYDAY, I WILL UPDATE THE CRACK ONCE THEY RELEASE FIXES.**
+> ✅ Fully deobfuscated for transparency  
+> ✅ Verified clean: [VirusTotal Scan EXE](https://www.virustotal.com/gui/file/43f5ce5982826c9d850985658603e8f717a9494e5188808c6d6449ad6ee00e5f/summary)| [VirusTotal Scan AHK](https://www.virustotal.com/gui/file/58c470e8416651ae1d2252b575b76d843a1451c55acdd2dd3c82486dc6e2aeae/summary)
+> ✅ Official macro bugs fixed and stability improved
 
----
-
-## 🚀 Installation
-
-1. **Download and install [AutoHotkey v1.1](https://www.autohotkey.com/)** (Not v2.0) if you don’t have it yet.  
-2. Grab the latest cracked release ZIP from this repository’s [GitHub Releases](https://github.com/YourRepoHere) (source code included).  
-3. Extract the ZIP to your preferred folder.
-
----
-
-## 🎮 Setup & Usage Tips
-
-Before launching the macro, make sure to:  
-- Extract all files completely.  
-- Run Roblox in **windowed fullscreen** (avoid true fullscreen).  
-- Set your Roblox camera mode to **Default (Classic)**.  
-- Place the **Recall Wrench** in your **2nd hotbar slot** (the macro auto-assigns it during alignment but double-check).  
-- Have **5-10 items** in your hotbar for smooth operation.  
-- Enable **UI Navigation** in Roblox settings.  
-- Unequip any pets that grant speed boosts (like the grey mouse pet) to prevent macro desync.  
-
----
-
-## 🐝 Features – All Premium Unlocked!
-
-- **Honey Shop Access & New Honey Items** fully unlocked!  
-- **Auto-Collect Pollinated Plants** (requires fully expanded garden and pollen radar).  
-- **Auto-Deposit & Compress Pollinated Plants** for effortless inventory management.  
-- **Ember Lily Seed** added to the seed shop.  
-- **Friendship Pot** now available in the gear shop.  
-- Multi-Instance Mode fully enabled — run multiple Roblox clients simultaneously!  
-- Dropdown menus for adjusting macro speed and UI navigation keybinds.  
-- Auto-slot Recall Wrench during alignment and auto-reconnect support.  
-- Clean UI with donation tab removed (no annoying paywall prompts).  
-- Discord webhook integration for updates and notifications.  
-- Multi-alts macroing support.  
-- Fast mode / Slow mode options for tailored gameplay speed.
-
----
-
-## 🐞 Bug Fixes & Improvements
-
-- Fixed auto-reconnect issues for more reliable uptime.  
-- Gear shop clicks properly registered now.  
-- UI navigation initializes on hotbar correctly.  
-- Failsafe added to prevent accidental refresh eggs clicking.  
-- Various small polish and stability fixes.
-
----
-
-## 📢 Disclaimer  
-This is a **cracked** and **repacked** version of the macro originally made by Virage, with JoshAS joining in for some extra fun. Use responsibly and at your own risk.
-
----
+> **🔒 Feature Development Repository**  
+> This repo contains a cracked, fully unlocked version of the **Grow a Garden** macro for Roblox — all premium features enabled, no paywall.  
+> It's maintained for ongoing updates, bug fixes, and enhancements beyond the original.  
+>  
+> ⚠️ This is **not the main project repo**. For public releases and official updates, visit: https://github.com/pomsaddons/Virage-Grow-A-Garden-Macro-Premium-Crack
