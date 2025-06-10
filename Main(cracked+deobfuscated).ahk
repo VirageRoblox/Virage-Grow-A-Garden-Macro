@@ -1035,7 +1035,7 @@ StartMacro:
     global lastEggShopMinute := -1
     global lastCosmeticShopHour := -1
     global lastHoneyShopMinute := -1
-    global lastDepositHoneySecond := -1
+    global lastDepositHoneyMinute := -1
     global lastCollectPollinatedHour := -1
     started := 1
     cycleFinished := 1
@@ -1235,9 +1235,9 @@ HoneyShopAction:
     Return
 
 HoneyDepositCycleTimer:
-    if (cycleCount > 0 && Mod(currentSecond, 45) = 0 && currentSecond != lastDepositHoneySecond) {
-        lastDepositHoneySecond := currentSecond
-        SetTimer, QueueHoneyDepositAction, -8000
+    if (cycleCount > 0 && Mod(currentMinute, 5) = 0 && currentMinute != lastDepositHoneyMinute) {
+    lastDepositHoneyMinute := currentMinute
+    SetTimer, QueueHoneyDepositAction, -8000
     }
     Return
 
@@ -1264,10 +1264,8 @@ ShowCycleTimers:
     gearMin := rem5sec // 60
     gearSec := Mod(rem5sec, 60)
     gearText := (gearSec < 10) ? gearMin . ":0" . gearSec : gearMin . ":" . gearSec
-    mod45 := Mod(currentSecond, 45)
-    rem45sec := (mod45 = 0) ? 45 : 45 - mod45
-    depositHoneyMin := rem45sec // 60
-    depositHoneySec := Mod(rem45sec, 60)
+    depositHoneyMin := rem5sec // 60Add commentMore actions
+    depositHoneySec := Mod(rem5sec, 60)
     depositHoneyText := (depositHoneySec < 10) ? depositHoneyMin . ":0" . depositHoneySec : depositHoneyMin . ":" . depositHoneySec
     mod30 := Mod(currentMinute, 30)
     rem30min := (mod30 = 0) ? 30 : 30 - mod30
