@@ -30,6 +30,8 @@ global gearAutoActive := 0
 global eggAutoActive  := 0
 global honeyAutoActive := 0
 global safeCheckAutoActive := 0
+global honeyMachineActive := 0
+global honeyMCountdown := 0 
 
 global triedVerify := 0 
 
@@ -480,10 +482,10 @@ seedItems := ["Carrot Seed", "Strawberry Seed", "Blueberry Seed", "Orange Tulip"
              , "Tomato Seed", "Corn Seed", "Daffodil Seed", "Watermelon Seed"
              , "Pumpkin Seed", "Apple Seed", "Bamboo Seed", "Coconut Seed"
              , "Cactus Seed", "Dragon Fruit Seed", "Mango Seed", "Grape Seed"
-             , "Mushroom Seed", "Pepper Seed", "Cacao Seed", "Beanstalk Seed"] ;
+             , "Mushroom Seed", "Pepper Seed", "Cacao Seed", "Beanstalk Seed", "Ember Lily Seed"] ;
 
 gearItems := ["Watering Can", "Trowel", "Recall Wrench", "Basic Sprinkler", "Advanced Sprinkler"
-             , "Godly Sprinkler", "Lightning Rod", "Master Sprinkler", "Favorite Tool", "Harvest Tool"]
+             , "Godly Sprinkler", "Lightning Rod", "Master Sprinkler", "Favorite Tool", "Harvest Tool", "Friendship Pot"]
 
 eggItems := ["Common Egg", "Uncommon Egg", "Rare Egg", "Legendary Egg", "Mythical Egg"
              , "Bug Egg"]
@@ -491,7 +493,7 @@ eggItems := ["Common Egg", "Uncommon Egg", "Rare Egg", "Legendary Egg", "Mythica
 cosmeticItems := ["Cosmetic 1", "Cosmetic 2", "Cosmetic 3", "Cosmetic 4", "Cosmetic 5"
              , "Cosmetic 6",  "Cosmetic 7", "Cosmetic 8", "Cosmetic 9"]
 
-honeyItems := ["Flower Seed Pack", "Nectarine Seed", "Hive Fruit Seed", "Honey Sprinkler", "Bee Egg"
+honeyItems := ["Flower Seed Pack", "Lavender Seed", "Nectarshade Seed", "Nectarine Seed", "Hive Fruit Seed", "Pollen Radar", "Nectar Staff", "Honey Sprinkler", "Bee Egg"
              , "Bee Crate",  "Honey Comb", "Bee Chair", "Honey Touch", "Honey Walkway"]
 
 settingsFile := A_ScriptDir "\settings.ini"
@@ -669,9 +671,11 @@ Gui, Add, Tab, x10 y10 w500 h400 vMyTab -Wrap, Seeds|Gears|Eggs|Cosmetics|Honey|
 
     Gui, Tab, 5
     Gui, Font, s9 cWhite Bold, Segoe UI
-    Gui, Add, GroupBox, x23 y50 w475 h340 cFFB875, Honey Shop
+    Gui, Add, GroupBox, x23 y50 w475 h340 cFFB875, Honey
     IniRead, SelectAllHoneys, %settingsFile%, Honey, SelectAllHoneys, 0
     Gui, Add, Checkbox, % "x50 y90 vSelectAllHoneys gHandleSelectAll cFFB875 " . (SelectAllHoneys ? "Checked" : ""), Select All Honeys
+    IniRead, AutoHoney, %settingsFile%, Honey, AutoHoney, 0
+    Gui, Add, Checkbox, % "x250 y90 vAutoHoney cFFB875 " . (AutoHoney ? "Checked" : ""), Auto Honey
     Loop, % honeyItems.Length() {
         IniRead, eVal, %settingsFile%, Honey, Item%A_Index%, 0
         y := 125 + (A_Index - 1) * 25
@@ -1110,7 +1114,6 @@ GetSelectedItems() {
 ; macro starting
 
 StartScan:
-    
     Gui, Submit, NoHide
 
 if (UseAlts) {
@@ -1123,6 +1126,7 @@ if (UseAlts) {
     global lastGearMinute := -1
     global lastEggShopMinute := -1
     global lastHoneyShopMinute := -1
+    global lastHoneyMinute = -1
     global lastCosmeticShopMinute := -1
     global lastCosmeticShopHour   := -1 
     global lastSafeCheckMinute := -1
@@ -1204,6 +1208,10 @@ if (UseAlts) {
         actionQueue.Push("BuyHoneyShop")
         honeyAutoActive := 1
         SetTimer, AutoBuyHoneyShop, 1000 ; checks every second if it should queue
+
+        actionQueue.Push("HoneyMachine")
+        honeyMachineActive := 1
+        SetTimer, AutoHoneyM, 1000 ; checks every second if it should queue
         
         cosmeticAutoActive := 1
         SetTimer, AutoBuyCosmeticShop, 1000 ; checks every second if it should queue
@@ -1243,30 +1251,6 @@ while (started)
         eggMin := rem30sec // 60
         eggSec := Mod(rem30sec, 60)
         eggText := (eggSec < 10) ? eggMin . ":0" . eggSec : eggMin . ":" . eggSec
-        
-        nextFullHour := (currentHour >= 23 ? 0 : currentHour + 1)
-        currentTotalSec := currentHour * 3600 + currentMinute * 60 + currentSecond
-        nextFullHourSec := nextFullHour * 3600
-        remSeconds := nextFullHourSec - currentTotalSec
-        if (remSeconds < 0)
-            remSeconds := 0
-        honeyM := remSeconds // 60
-        honeyS := Mod(remSeconds, 60)
-        honeyText := Format("{1:02d}:{2:02d}", honeyM, honeyS)
-
-        totalSecNow := currentHour * 3600 + currentMinute * 60 + currentSecond
-        nextCosHour := (Floor(currentHour/4) + 1) * 4
-        nextCosTotal := nextCosHour * 3600
-        remCossec := nextCosTotal - totalSecNow
-        if (remCossec < 0)
-            remCossec := 0
-        cosH := remCossec // 3600
-        cosM := (remCossec - cosH*3600) // 60
-        cosS := Mod(remCossec, 60)
-        if (cosH > 0)
-            cosText := cosH . ":" . (cosM < 10 ? "0" . cosM : cosM) . ":" . (cosS < 10 ? "0" . cosS : cosS)
-        else
-            cosText := cosM . ":" . (cosS < 10 ? "0" . cosS : cosS)
 
         ; ── Build tooltipText first ──
         tooltipText := ""
@@ -1280,12 +1264,14 @@ while (started)
             tooltipText .= "Egg Shop : " . eggText . "`n"
         }
         if (selectedHoneyItems.Length()) {
-            tooltipText .= "Honey Shop : " . honeyText . "`n"
+            tooltipText .= "Honey Shop : " . eggText . "`n"
         }
         if (BuyAllCosmetics) {
             tooltipText .= "Cosmetic Shop: " . cosText . "`n"
         }
-
+        if (AutoHoney) {
+            tooltipText .= "Honey Machine: " . seedText . "`n"
+        }
         ; ── Show it at the mouse cursor (with a small offset) ──
         if (tooltipText != "") {
             CoordMode, Mouse, Screen
@@ -1413,7 +1399,7 @@ if (selectedEggItems.Length()) {
 Return
 
 AutoBuyHoneyShop:
-    if (cycleCount > 0 && Mod(currentMinute, 60) = 0 && currentMinute != lastHoneyShopMinute) {
+    if (cycleCount > 0 && Mod(currentMinute, 30) = 0 && currentMinute != lastEggShopMinute) {
         lastHoneyShopMinute := currentMinute
         SetTimer, PushBuyHoneyShop, -2000
     }
@@ -1439,7 +1425,32 @@ BuyHoneyShop:
         } 
     } 
 
+AutoHoneyM:
+    if (cycleCount > 0 && Mod(currentMinute, 5) = 0 && currentMinute != lastHoneyMinute){
+        lastHoneyMinute := currentMinute
+        SetTimer, PushAutoHoney, -2000
+    }
+return
+
 Return
+PushAutoHoney: 
+    actionQueue.Push("HoneyMachine")
+Return
+HoneyMachine:
+    currentSection := "HoneyMachine"
+
+    if (AutoHoney) {
+        if (UseAlts) {
+            for index, winID in windowIDs {
+                WinActivate, ahk_id %winID%
+                WinWaitActive, ahk_id %winID%,, 2
+                Gosub, HoneyMachinePath
+            }
+        }
+        else {
+            Gosub, HoneyMachinePath
+        } 
+    } 
 
 AutoBuyCosmeticShop:
     if ( cycleCount > 0
@@ -1633,8 +1644,9 @@ HoneyShopPath:
 
     WinActivate, ahk_exe RobloxPlayerBeta.exe
     Sleep, 100
-    uiUniversal("616161616062606")
-    Sleep, % FastMode ? 100 : 1000
+    uiUniversal("616161616062606",1)
+    Sleep, % FastMode ? 500 : 1000
+    Send {D}
     Send {D down}
     Sleep, 9000
     Send {D up}
@@ -1646,7 +1658,7 @@ HoneyShopPath:
     Send {D up}
     Sleep, % FastMode ? 300 : 1000
     Send {e}
-    SendDiscordMessage(webhookURL, "**[HONEY CYCLE]**")
+    SendDiscordMessage(webhookURL, "**[HONEYSHOP CYCLE]**")
     Sleep, % FastMode ? 3000 : 5000
     SafeClickRelative(0.7, 0.5)
 
@@ -1667,7 +1679,7 @@ HoneyShopPath:
         uiUniversal("63636362626263616161616363636262626361616161606561646056")
         Return
     }
-
+    ; right = 1, left = 2, up = 3, down = 4, enter = 0, fastmodedelay = 5, delay = 6
     uiUniversal("63636361616464636363636161616464606056", 0)
     Sleep, 100
     positions := []
@@ -1677,16 +1689,22 @@ HoneyShopPath:
     }
     positions.Sort()
     currentPos := 1
-    for _, targetPos in positions {
+    for i, targetPos in positions {
         delta := targetPos - currentPos
         if (delta > 0)
             Loop, % delta
+            if (targetPos == 1 || targetPos == 9 || targetPos == 10)
+                uiUniversal("44", 0, 1)
+            else
                 uiUniversal("4", 0, 1)
         else if (delta < 0)
             Loop, % -delta
                 uiUniversal("3", 0, 1)
         currentItem := honeyItems[targetPos]
-        uiUniversal("0646", 0, 1)
+        if (targetPos == 1 || targetPos == 9 || targetPos == 10)
+            uiUniversal("06446", 0, 1)
+        else 
+            uiUniversal("0646", 0, 1)
         Sleep, % FastMode ? 50 : 200
         quickDetect(0x26EE26, 0x1DB31D, 5, 0.4262, 0.2903, 0.6918, 0.8208)
         Sleep, 50
@@ -1701,9 +1719,68 @@ HoneyShopPath:
 
     if (honeyCompleted) {
         Sleep, 500
-        uiUniversal("626066666606", 1, 1)
-        SendDiscordMessage(webhookURL, "**[HONEY COMPLETED]**")
+        uiUniversal("6262626066666606", 1, 1)
+        SendDiscordMessage(webhookURL, "**[HONEYSHOP COMPLETED]**")
     }
+Return
+
+HoneyMachinePath:
+    honeyMachineCompleted := false
+    ; right = 1, left = 2, up = 3, down = 4, enter = 0, fastmodedelay = 5, delay = 6
+    WinActivate, ahk_exe RobloxPlayerBeta.exe
+    Sleep, 100
+    uiUniversal("616161616062606")
+    SendDiscordMessage(webhookURL, "**[HONEYMACHINE CYCLE]**")
+    Sleep, % FastMode ? 100 : 1000
+    Send, {D down} 
+    Sleep, 9000      
+    Send, {D up}
+    Send, {W down}
+    Sleep, 850
+    Send {W up}
+    Send, {D down}
+    Sleep 600
+    Send, {D up} 
+    Sleep, % FastMode ? 250 : 500
+    Send {e}
+    uiUniversal("62626261606164646460",0)
+    SendRaw, Pollinated
+    uiUniversal("06",1,1)
+    Sleep, % FastMode ? 50 : 150
+    SafeClickRelative(0.39,0.77) ;1
+    Send, {E}
+    Sleep, % FastMode ? 50 : 150
+    SafeClickRelative(0.419,0.77) ;2
+    Send, {E}
+    Sleep, % FastMode ? 50 : 150
+    SafeClickRelative(0.444,0.77) ;3
+    Send, {E}
+    Sleep, % FastMode ? 50 : 150
+    SafeClickRelative(0.469,0.77) ;4
+    Send, {E}
+    Sleep, % FastMode ? 50 : 150
+    SafeClickRelative(0.484,0.77) ;5
+    Send, {E}
+    Sleep, % FastMode ? 50 : 150
+    SafeClickRelative(0.509,0.77) ;6
+    Send, {E}
+    Sleep, % FastMode ? 50 : 150
+    SafeClickRelative(0.534,0.77) ;7
+    Send, {E}
+    Sleep, % FastMode ? 50 : 150
+    SafeClickRelative(0.559,0.77) ;8
+    Send, {E}
+    Sleep, % FastMode ? 50 : 150
+    SafeClickRelative(0.584,0.77) ;9
+    Send, {E}
+    Sleep, % FastMode ? 50 : 150
+    SafeClickRelative(0.609,0.77) ;10
+    Send, {E}
+    uiUniversal("62626251506")
+    honeyMachineCompleted := true
+    honeyMCountdown := 180
+    SendDiscordMessage(webhookURL, "**[HONEYMACHINE COMPLETED]**")
+    uiUniversal("616161616062606")
 Return
 
 SeedShopPath:
@@ -2037,6 +2114,7 @@ SaveSettings:
     IniWrite, %UseAlts%, %settingsFile%, Main, UseAlts
     IniWrite, %PingSelected%, %settingsFile%, Main, PingSelected
     IniWrite, %BuyAllCosmetics%, %settingsFile%, Cosmetic, BuyAllCosmetics
+    IniWrite, %AutoHoney%, %settingsFile%, Honey, AutoHoney
     IniWrite, %SelectAllEggs%, %settingsFile%, Egg, SelectAllEggs
     IniWrite, %SelectAllHoneys%, %settingsFile%, Honey, SelectAllHoneys
     IniWrite, %SelectAllSeeds%, %settingsFile%, Seed, SelectAllSeeds
