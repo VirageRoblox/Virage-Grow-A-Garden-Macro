@@ -1264,7 +1264,7 @@ ShowCycleTimers:
     gearMin := rem5sec // 60
     gearSec := Mod(rem5sec, 60)
     gearText := (gearSec < 10) ? gearMin . ":0" . gearSec : gearMin . ":" . gearSec
-    depositHoneyMin := rem5sec // 60Add commentMore actions
+    depositHoneyMin := rem5sec // 60
     depositHoneySec := Mod(rem5sec, 60)
     depositHoneyText := (depositHoneySec < 10) ? depositHoneyMin . ":0" . depositHoneySec : depositHoneyMin . ":" . depositHoneySec
     mod30 := Mod(currentMinute, 30)
