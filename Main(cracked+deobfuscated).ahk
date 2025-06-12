@@ -445,20 +445,19 @@ Return
 
 
 ShopDialogClick(shopTypeP) {
-    MoveRelativeToRobloxWindow(midX, midY)
     Sleep, 100
     Loop, 4 {
         Send, {WheelUp}
         Sleep, 20
     }
-        Sleep, 300
+    Sleep, 300
     if (shopTypeP = "gear") {
         ClickRelativeToRobloxWindow(midX + 0.4, midY - 0.1)
     }
     else if (shopTypeP = "honey") {
         ClickRelativeToRobloxWindow(midX + 0.4, midY)
     }
-        Sleep, 300
+    Sleep, 300
     Loop, 4 {
         Send, {WheelDown}
         Sleep, 20
@@ -1047,13 +1046,13 @@ StartMacro:
     MsgBox, 16, Error, Please, extract the file before running the macro.
     ExitApp
     }
-    if(!windowIDS.MaxIndex()) {
+    if(!windowIDS.Length()) {
     MsgBox, 0, Message, No Roblox Window Found
     Return
     }
     SendDiscordWebhook(webhookURL, "Macro started.")
     if (MultiInstanceMode) {
-    MsgBox, 1, Multi-Instance Mode, % "You have " . windowIDS.MaxIndex() . " instances open. (Instance ID's: " . idDisplay . ")`nPress OK to start the macro."
+    MsgBox, 1, Multi-Instance Mode, % "You have " . windowIDS.Length() . " instances open. (Instance ID's: " . idDisplay . ")`nPress OK to start the macro."
     IfMsgBox, Cancel
     Return
     }
@@ -1108,22 +1107,23 @@ StartMacro:
     WinActivate, % "ahk_id " . firstWindow
     Gosub, % next
     }
-    if (!actionQueue.MaxIndex()) {
-    cycleFinished := 1
+    if (!actionQueue.Length()) {
+        cycleFinished := 1
     }
     Sleep, 500
     } else {
-    Gosub, ShowCycleTimers
-    if (cycleFinished) {
-    WinActivate, % "ahk_id " . firstWindow
-    cycleCount++
-    SendDiscordWebhook(webhookURL, "[**CYCLE " . cycleCount . " COMPLETED**]")
-    cycleFinished := 0
-    if (!MultiInstanceMode) {
-    SetTimer, HandleReconnect, 5000
-    }
-    }
-    Sleep, 1000
+        Gosub, ShowCycleTimers
+        if (cycleFinished) {
+            WinActivate, % "ahk_id " . firstWindow
+            cycleCount++
+            SendDiscordWebhook(webhookURL, "[**CYCLE " . cycleCount . " COMPLETED**]")
+            Gosub, AlignInstance
+            cycleFinished := 0
+            if (!MultiInstanceMode) {
+                SetTimer, HandleReconnect, 5000
+            }
+        }
+        Sleep, 1000
     }
     }
     Return
