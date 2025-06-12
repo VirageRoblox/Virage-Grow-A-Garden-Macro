@@ -7,6 +7,8 @@ SetWinDelay, -1
 SetControlDelay, -1
 SetBatchLines, -1
 global webhookURL
+global webhookMessageQueue := []
+global webhookBatchTimerActive := 0
 global privateServerLink
 global discordUserID
 global PingSelected
@@ -66,7 +68,6 @@ honeyItems := ["Flower Seed Pack", "placeHolder1", "Lavender Seed", "Nectarshade
 realHoneyItems := ["Flower Seed Pack", "Lavender Seed", "Nectarshade Seed", "Nectarine Seed", "Hive Fruit Seed", "Pollen Rader", "Nectar Staff"
 , "Honey Sprinkler", "Bee Egg", "Bee Crate", "Honey Comb", "Bee Chair", "Honey Torch", "Honey Walkway"]
 
-
 SendDiscordWebhook(urlP, messageP) {
     FormatTime, messageTime, , hh:mm:ss tt
     fullMessage := "[" . messageTime . "] " . messageP
@@ -85,6 +86,33 @@ SendDiscordWebhook(urlP, messageP) {
         return
     }
 }
+
+QueueDiscordWebhook(urlP, messageP) {
+    global webhookMessageQueue
+    webhookMessageQueue.Push({url: urlP, msg: messageP})
+    if (webhookMessageQueue.Length() >= 5) {
+        Gosub, SendWebhookBatch
+    }
+}
+
+SendWebhookBatch:
+    global webhookMessageQueue
+    if (webhookMessageQueue.Length() > 0) {
+        urlMessages := {}
+        for _, entry in webhookMessageQueue {
+            if (!urlMessages.HasKey(entry.url))
+                urlMessages[entry.url] := []
+            urlMessages[entry.url].Push(entry.msg)
+        }
+        for url, messages in urlMessages {
+            batchMsg := ""
+            for _, m in messages
+                batchMsg .= m . "`n"
+            SendDiscordWebhook(url, batchMsg)
+        }
+        webhookMessageQueue := []
+    }
+    Return
 
 
 CheckInputURLValid(inputUrlP, messageP := 0, modeP := "nil") {
@@ -529,7 +557,7 @@ NavigateUI("4330320", 1, 1)
 else {
 ToolTip, % "Error In Detecting " . shopTypeP
 SetTimer, HideTooltip, -1500
-SendDiscordWebhook(webhookURL, "Failed To Detect " . shopTypeP . " shop Opening [Error]" . (PingSelected ? " <@" . discordUserID . ">" : ""))
+QueueDiscordWebhook(webhookURL, "Failed To Detect " . shopTypeP . " shop Opening [Error]" . (PingSelected ? " <@" . discordUserID . ">" : ""))
 NavigateUI("3332223111133322231111054105")
 }
 }
@@ -567,12 +595,12 @@ break
 if (PixelSearchInRobloxWindow(buyColorP, variationP, 0.40, 0.60, 0.65, 0.70)) {
 ToolTip, % currentItem . "`nIn Stock, Not Selected"
 SetTimer, HideTooltip, -1500
-SendDiscordWebhook(webhookURL, currentItem . " In Stock, Not Selected")
+QueueDiscordWebhook(webhookURL, currentItem . " In Stock, Not Selected")
 }
 else {
 ToolTip, % currentItem . "`nNot In Stock, Not Selected"
 SetTimer, HideTooltip, -1500
-SendDiscordWebhook(webhookURL, currentItem . " Not In Stock, Not Selected")
+QueueDiscordWebhook(webhookURL, currentItem . " Not In Stock, Not Selected")
 }
 if (UINavigationFix) {
 NavigateUI(3140, 1, 1)
@@ -594,7 +622,7 @@ if (!eggsCompleted) {
 NavigateUI(5, 1, 1)
 ToolTip, Error In Detection
 SetTimer, HideTooltip, -1500
-SendDiscordWebhook(webhookURL, "Failed To Detect Any Egg [Error]" . (PingSelected ? " <@" . discordUserID . ">" : ""))
+QueueDiscordWebhook(webhookURL, "Failed To Detect Any Egg [Error]" . (PingSelected ? " <@" . discordUserID . ">" : ""))
 }
 }
 
@@ -651,9 +679,9 @@ SetTimer, HideTooltip, -1500
 NavigateUI(50, 0, 1, 1)
 Sleep, 50
 if (ping)
-SendDiscordWebhook(webhookURL, "Bought " . currentItem . ". <@" . discordUserID . ">")
+QueueDiscordWebhook(webhookURL, "Bought " . currentItem . ". <@" . discordUserID . ">")
 else
-SendDiscordWebhook(webhookURL, "Bought " . currentItem . ".")
+QueueDiscordWebhook(webhookURL, "Bought " . currentItem . ".")
 }
 }
 }
@@ -666,9 +694,9 @@ SetTimer, HideTooltip, -1500
 NavigateUI(500, 1, 1)
 Sleep, 50
 if (ping)
-SendDiscordWebhook(webhookURL, "Bought " . currentItem . ". <@" . discordUserID . ">")
+QueueDiscordWebhook(webhookURL, "Bought " . currentItem . ". <@" . discordUserID . ">")
 else
-SendDiscordWebhook(webhookURL, "Bought " . currentItem . ".")
+QueueDiscordWebhook(webhookURL, "Bought " . currentItem . ".")
 }
 if (!stock) {
 if (UINavigationFix) {
@@ -677,7 +705,7 @@ NavigateUI(3140, 1, 1)
 else {
 NavigateUI(1105, 1, 1)
 }
-SendDiscordWebhook(webhookURL, currentItem . " Not In Stock.")
+QueueDiscordWebhook(webhookURL, currentItem . " Not In Stock.")
 }
 }
 Sleep, 100
@@ -686,6 +714,62 @@ ToolTip, %currentItem% `nNot In Stock
 SetTimer, HideTooltip, -1500
 }
 }
+
+global cycles := [
+    { name: "SeedShop",      interval: 300,   action: "SeedShopAction",      enabled: Func("IsSeedShopEnabled") },
+    { name: "GearShop",      interval: 300,   action: "GearShopAction",      enabled: Func("IsGearShopEnabled") },
+    { name: "EggShop",       interval: 1800,  action: "EggShopAction",       enabled: Func("IsEggShopEnabled") },
+    { name: "CosmeticShop",  interval: 7200,  action: "CosmeticShopAction",  enabled: Func("IsCosmeticShopEnabled") },
+    { name: "HoneyShop",     interval: 1800,  action: "HoneyShopAction",     enabled: Func("IsHoneyShopEnabled") },
+    { name: "Pollinated",    interval: 3600,  action: "CollectPollinatedAction", enabled: Func("IsPollinatedEnabled") },
+]
+
+global lastCycleTimes := {}
+
+IsSeedShopEnabled()      { return selectedSeedItems.Length() }
+IsGearShopEnabled()      { return selectedGearItems.Length() }
+IsEggShopEnabled()       { return selectedEggItems.Length() }
+IsCosmeticShopEnabled()  { return BuyAllCosmetics }
+IsHoneyShopEnabled()     { return selectedHoneyItems.Length() }
+IsPollinatedEnabled()    { return AutoCollectPollinated }
+IsHoneyDepositEnabled()  { return AutoHoney }
+
+IsInActionQueue(actionName) {
+    global actionQueue
+    for _, queuedAction in actionQueue
+        if (queuedAction = actionName)
+            return true
+    return false
+}
+
+InitializeCycleManager:
+    SetTimer, CycleManager, 1000
+    for _, cycle in cycles
+        lastCycleTimes[cycle.name] := 0
+    Return
+
+CycleManager:
+    now := A_Now
+    FormatTime, nowSec, %now%, HH24
+    nowSec := currentHour * 3600 + currentMinute * 60 + currentSecond
+    for _, cycle in cycles {
+        if (!cycle.enabled.Call())
+            continue
+        lastRun := lastCycleTimes[cycle.name]
+        ; Only add HoneyDepositRoutine if not already in queue to prevent it filling up the queue
+        if (cycle.action = "HoneyDepositRoutine") {
+            if (nowSec - lastRun >= 30 && !IsInActionQueue("HoneyDepositRoutine")) {
+                actionQueue.Push("HoneyDepositRoutine")
+                lastCycleTimes[cycle.name] := nowSec
+            }
+        } else {
+            if (nowSec - lastRun >= cycle.interval) {
+                actionQueue.Push(cycle.action)
+                lastCycleTimes[cycle.name] := nowSec
+            }
+        }
+    }
+    Return
 
 MainGUI:
 Gui, Destroy
@@ -1050,7 +1134,7 @@ StartMacro:
     MsgBox, 0, Message, No Roblox Window Found
     Return
     }
-    SendDiscordWebhook(webhookURL, "Macro started.")
+    QueueDiscordWebhook(webhookURL, "Macro started.")
     if (MultiInstanceMode) {
     MsgBox, 1, Multi-Instance Mode, % "You have " . windowIDS.Length() . " instances open. (Instance ID's: " . idDisplay . ")`nPress OK to start the macro."
     IfMsgBox, Cancel
@@ -1095,7 +1179,7 @@ StartMacro:
     instanceNumber := window
     ToolTip, % "Running Cycle On Instance " . window
     SetTimer, HideTooltip, -1500
-    SendDiscordWebhook(webhookURL, "***Instance " . instanceNumber . "***")
+    QueueDiscordWebhook(webhookURL, "***Instance " . instanceNumber . "***")
     WinActivate, % "ahk_id " . currentWindow
     Sleep, 200
     ClickRelativeToRobloxWindow(midX, midY)
@@ -1116,7 +1200,7 @@ StartMacro:
         if (cycleFinished) {
             WinActivate, % "ahk_id " . firstWindow
             cycleCount++
-            SendDiscordWebhook(webhookURL, "[**CYCLE " . cycleCount . " COMPLETED**]")
+            QueueDiscordWebhook(webhookURL, "[**CYCLE " . cycleCount . " COMPLETED**]")
             Gosub, AlignInstance
             cycleFinished := 0
             if (!MultiInstanceMode) {
@@ -1128,49 +1212,16 @@ StartMacro:
     }
     Return
 
-SeedCycleTimer:
-    if (cycleCount > 0 && Mod(currentMinute, 5) = 0 && currentMinute != lastSeedMinute) {
-    lastSeedMinute := currentMinute
-    SetTimer, QueueSeedShopAction, -8000
-    }
-    Return
-
-QueueSeedShopAction:
-    actionQueue.Push("SeedShopAction")
-    Return
-
 SeedShopAction:
     currentSection := "SeedShopAction"
     if (selectedSeedItems.Length())
     Gosub, SeedCycleRoutine
     Return
 
-GearCycleTimer:
-    if (cycleCount > 0 && Mod(currentMinute, 5) = 0 && currentMinute != lastGearMinute) {
-    lastGearMinute := currentMinute
-    SetTimer, QueueGearShopAction, -8000
-    }
-    Return
-
-QueueGearShopAction:
-    actionQueue.Push("GearShopAction")
-    Return
-
 GearShopAction:
     currentSection := "GearShopAction"
     if (selectedGearItems.Length())
     Gosub, GearCycleRoutine
-    Return
-
-EggCycleTimer:
-    if (cycleCount > 0 && Mod(currentMinute, 30) = 0 && currentMinute != lastEggShopMinute) {
-    lastEggShopMinute := currentMinute
-    SetTimer, QueueEggShopAction, -8000
-    }
-    Return
-
-QueueEggShopAction:
-    actionQueue.Push("EggShopAction")
     Return
 
 EggShopAction:
@@ -1180,33 +1231,11 @@ EggShopAction:
     }
     Return
 
-CosmeticCycleTimer:
-    if (cycleCount > 0 && currentMinute = 0 && Mod(currentHour, 2) = 0 && currentHour != lastCosmeticShopHour) {
-    lastCosmeticShopHour := currentHour
-    SetTimer, QueueCosmeticShopAction, -8000
-    }
-    Return
-
-QueueCosmeticShopAction:
-    actionQueue.Push("CosmeticShopAction")
-    Return
-
 CosmeticShopAction:
     currentSection := "CosmeticShopAction"
     if (BuyAllCosmetics) {
     Gosub, CosmeticCycleRoutine
     }
-    Return
-
-CollectPollinatedCycleTimer:
-    if (cycleCount > 0 && currentMinute = 0 && currentHour != lastCollectPollinatedHour) {
-    lastCollectPollinatedHour := currentHour
-    SetTimer, QueueCollectPollinatedAction, -600000
-    }
-    Return
-
-QueueCollectPollinatedAction:
-    actionQueue.Push("CollectPollinatedAction")
     Return
 
 CollectPollinatedAction:
@@ -1216,17 +1245,6 @@ CollectPollinatedAction:
     }
     Return
 
-HoneyShopCycleTimer:
-    if (cycleCount > 0 && Mod(currentMinute, 30) = 0 && currentMinute != lastHoneyShopMinute) {
-    lastHoneyShopMinute := currentMinute
-    SetTimer, QueueHoneyShopAction, -8000
-    }
-    Return
-
-QueueHoneyShopAction:
-    actionQueue.Push("HoneyShopAction")
-    Return
-
 HoneyShopAction:
     currentSection := "HoneyShopAction"
     if (selectedHoneyItems.Length()) {
@@ -1234,20 +1252,8 @@ HoneyShopAction:
     }
     Return
 
-HoneyDepositCycleTimer:
-    if (cycleCount > 0 && Mod(currentMinute, 5) = 0 && currentMinute != lastDepositHoneyMinute) {
-    lastDepositHoneyMinute := currentMinute
-    SetTimer, QueueHoneyDepositAction, -8000
-    }
-    Return
-
-QueueHoneyDepositAction:
-    actionQueue.Push("HoneyDepositAction")
-    Return
-
-HoneyDepositAction:
-    currentSection := "HoneyDepositAction"
-    if (AutoHoney) {
+HoneyDepositStandaloneTimer:
+    if (AutoHoney && actionQueue.Length() == 0) {
         Gosub, HoneyDepositRoutine
     }
     Return
@@ -1264,9 +1270,6 @@ ShowCycleTimers:
     gearMin := rem5sec // 60
     gearSec := Mod(rem5sec, 60)
     gearText := (gearSec < 10) ? gearMin . ":0" . gearSec : gearMin . ":" . gearSec
-    depositHoneyMin := rem5sec // 60
-    depositHoneySec := Mod(rem5sec, 60)
-    depositHoneyText := (depositHoneySec < 10) ? depositHoneyMin . ":0" . depositHoneySec : depositHoneyMin . ":" . depositHoneySec
     mod30 := Mod(currentMinute, 30)
     rem30min := (mod30 = 0) ? 30 : 30 - mod30
     rem30sec := rem30min * 60 - currentSecond
@@ -1313,7 +1316,15 @@ ShowCycleTimers:
     tooltipText .= "Cosmetic Shop: " . cosText . "`n"
     }
     if (AutoHoney) {
-    tooltipText .= "Deposit Honey: " . depositHoneyText . "`n"
+        if (IsInActionQueue("HoneyDepositRoutine")) {
+            tooltipText .= "Deposit Honey: Queued, waiting...`n"
+        } else {
+            timeSinceDeposit := (A_TickCount - lastHoneyDepositTime) // 1000
+            timeToNextDeposit := 30 - timeSinceDeposit
+            if (timeToNextDeposit < 0)
+                timeToNextDeposit := 0
+            tooltipText .= "Deposit Honey: " . timeToNextDeposit . "s`n"
+        }
     }
     if (selectedHoneyItems.Length()) {
     tooltipText .= "Honey Shop: " . honeyText . "`n"
@@ -1334,41 +1345,9 @@ ShowCycleTimers:
 
 InitializeMacroCycles:
     SetTimer, UpdateCurrentTime, 1000
-    if (selectedSeedItems.Length()) {
-    actionQueue.Push("SeedShopAction")
-    }
-    seedAutoActive := 1
-    SetTimer, SeedCycleTimer, 1000
-    if (selectedGearItems.Length()) {
-    actionQueue.Push("GearShopAction")
-    }
-    gearAutoActive := 1
-    SetTimer, GearCycleTimer, 1000
-    if (selectedEggItems.Length()) {
-    actionQueue.Push("EggShopAction")
-    }
-    eggAutoActive := 1
-    SetTimer, EggCycleTimer, 1000
-    if (BuyAllCosmetics) {
-    actionQueue.Push("CosmeticShopAction")
-    }
-    cosmeticAutoActive := 1
-    SetTimer, CosmeticCycleTimer, 1000
-    if (AutoCollectPollinated) {
-        actionQueue.Push("CollectPollinatedAction")
-    }
-    collectPollinatedAutoActive := 1
-    SetTimer, CollectPollinatedCycleTimer, 1000
-    if (selectedHoneyItems.Length()) {
-    actionQueue.Push("HoneyShopAction")
-    }
-    honeyShopAutoActive := 1
-    SetTimer, HoneyShopCycleTimer, 1000
-    if (AutoHoney) {
-    actionQueue.Push("HoneyDepositAction")
-    }
+    Gosub, InitializeCycleManager
+    SetTimer, HoneyDepositStandaloneTimer, 30000
     honeyDepositAutoActive := 1
-    SetTimer, HoneyDepositCycleTimer, 1000
     Return
 
 UpdateCurrentTime:
@@ -1394,7 +1373,7 @@ HandleReconnect:
     Run, % privateServerLink
     ToolTip, Attempting To Reconnect
     SetTimer, HideTooltip, -5000
-    SendDiscordWebhook(webhookURL, "Lost connection or macro errored, attempting to reconnect..." . (PingSelected ? " <@" . discordUserID . ">" : ""))
+    QueueDiscordWebhook(webhookURL, "Lost connection or macro errored, attempting to reconnect..." . (PingSelected ? " <@" . discordUserID . ">" : ""))
     SleepFromSpeed(15000, 30000)
     SetTimer, HandleRejoin, 5000
     }
@@ -1410,7 +1389,7 @@ HandleRejoin:
     else {
     ToolTip, Rejoined Successfully
     SleepFromSpeed(5000, 10000)
-    SendDiscordWebhook(webhookURL, "Successfully reconnected to server." . (PingSelected ? " <@" . discordUserID . ">" : ""))
+    QueueDiscordWebhook(webhookURL, "Successfully reconnected to server." . (PingSelected ? " <@" . discordUserID . ">" : ""))
     Sleep, 200
     Gosub, StartMacro
     }
@@ -1514,7 +1493,7 @@ EggCycleRoutine:
     HotbarNavigate(1, 0, "2")
     SleepFromSpeed(100, 1000)
     ClickRelativeToRobloxWindow(midX, midY)
-    SendDiscordWebhook(webhookURL, "**[Egg Cycle]**")
+    QueueDiscordWebhook(webhookURL, "**[Egg Cycle]**")
     Sleep, 800
     Send, {w Down}
     Sleep, 1800
@@ -1548,7 +1527,7 @@ EggCycleRoutine:
     Sleep, 300
     SpamEscape()
     SleepFromSpeed(1250, 2500)
-    SendDiscordWebhook(webhookURL, "**[Eggs Completed]**")
+    QueueDiscordWebhook(webhookURL, "**[Eggs Completed]**")
     Return
 
 SeedCycleRoutine:
@@ -1556,18 +1535,18 @@ SeedCycleRoutine:
     NavigateUI("1111020")
     SleepFromSpeed(100, 1000)
     Send, {e}
-    SendDiscordWebhook(webhookURL, "**[Seed Cycle]**")
+    QueueDiscordWebhook(webhookURL, "**[Seed Cycle]**")
     SleepFromSpeed(2500, 5000)
     Loop, 5 {
     if (PixelSearchInRobloxWindow(0x00CCFF, 10, 0.54, 0.20, 0.65, 0.325)) {
     ToolTip, Seed Shop Opened
     SetTimer, HideTooltip, -1500
-    SendDiscordWebhook(webhookURL, "Seed Shop Opened.")
+    QueueDiscordWebhook(webhookURL, "Seed Shop Opened.")
     Sleep, 200
     NavigateUI("33311443333114405550555", 0)
     Sleep, 100
     BuyItem("seed")
-    SendDiscordWebhook(webhookURL, "Seed Shop Closed.")
+    QueueDiscordWebhook(webhookURL, "Seed Shop Closed.")
     seedsCompleted = 1
     }
     if (seedsCompleted) {
@@ -1576,7 +1555,7 @@ SeedCycleRoutine:
     Sleep, 2000
     }
     HandleShopClose("seed", seedsCompleted)
-    SendDiscordWebhook(webhookURL, "**[Seeds Completed]**")
+    QueueDiscordWebhook(webhookURL, "**[Seeds Completed]**")
     Return
 
 GearCycleRoutine:
@@ -1591,18 +1570,18 @@ GearCycleRoutine:
     Send, {e}
     SleepFromSpeed(1500, 5000)
     ShopDialogClick("gear")
-    SendDiscordWebhook(webhookURL, "**[Gear Cycle]**")
+    QueueDiscordWebhook(webhookURL, "**[Gear Cycle]**")
     SleepFromSpeed(2500, 5000)
     Loop, 5 {
     if (PixelSearchInRobloxWindow(0x00CCFF, 10, 0.54, 0.20, 0.65, 0.325)) {
     ToolTip, Gear Shop Opened
     SetTimer, HideTooltip, -1500
-    SendDiscordWebhook(webhookURL, "Gear Shop Opened.")
+    QueueDiscordWebhook(webhookURL, "Gear Shop Opened.")
     Sleep, 200
     NavigateUI("33311443333114405550555", 0)
     Sleep, 100
     BuyItem("gear")
-    SendDiscordWebhook(webhookURL, "Gear Shop Closed.")
+    QueueDiscordWebhook(webhookURL, "Gear Shop Closed.")
     gearsCompleted = 1
     }
     if (gearsCompleted) {
@@ -1612,7 +1591,7 @@ GearCycleRoutine:
     }
     HandleShopClose("gear", gearsCompleted)
     HotbarNavigate(0, 1, "0")
-    SendDiscordWebhook(webhookURL, "**[Gears Completed]**")
+    QueueDiscordWebhook(webhookURL, "**[Gears Completed]**")
     Return
 
 
@@ -1631,21 +1610,20 @@ CosmeticCycleRoutine:
     SleepFromSpeed(100, 1000)
     Send, {e}
     SleepFromSpeed(2500, 5000)
-    SendDiscordWebhook(webhookURL, "**[Cosmetic Cycle]**")
+    QueueDiscordWebhook(webhookURL, "**[Cosmetic Cycle]**")
     Loop, 5 {
     if (PixelSearchInRobloxWindow(0x00CCFF, 10, 0.61, 0.182, 0.764, 0.259)) {
     ToolTip, Cosmetic Shop Opened
     SetTimer, HideTooltip, -1500
-    SendDiscordWebhook(webhookURL, "Cosmetic Shop Opened.")
+    QueueDiscordWebhook(webhookURL, "Cosmetic Shop Opened.")
     Sleep, 200
     for index, item in cosmeticItems {
-    label := StrReplace(item, " ", "")
-    currentItem := cosmeticItems[A_Index]
-    Gosub, %label%
-    SendDiscordWebhook(webhookURL, "Bought " . currentItem . (PingSelected ? " <@" . discordUserID . ">" : ""))
+    currentItem := cosmeticItems[index]
+    CosmeticRoutine(cosmeticSequences[index])
+    QueueDiscordWebhook(webhookURL, "Bought " . currentItem . (PingSelected ? " <@" . discordUserID . ">" : ""))
     Sleep, 100
     }
-    SendDiscordWebhook(webhookURL, "Cosmetic Shop Closed.")
+    QueueDiscordWebhook(webhookURL, "Cosmetic Shop Closed.")
     cosmeticsCompleted = 1
     }
     if (cosmeticsCompleted) {
@@ -1658,112 +1636,44 @@ CosmeticCycleRoutine:
     NavigateUI("111114150320")
     }
     else {
-    SendDiscordWebhook(webhookURL, "Failed To Detect Cosmetic Shop Opening [Error]" . (PingSelected ? " <@" . discordUserID . ">" : ""))
+    QueueDiscordWebhook(webhookURL, "Failed To Detect Cosmetic Shop Opening [Error]" . (PingSelected ? " <@" . discordUserID . ">" : ""))
     NavigateUI("11114111350")
     Sleep, 50
     NavigateUI("11110")
     }
     HotbarNavigate(0, 1, "0")
-    SendDiscordWebhook(webhookURL, "**[Cosmetics Completed]**")
+    QueueDiscordWebhook(webhookURL, "**[Cosmetics Completed]**")
     Return
 
-Cosmetic1:
-
+CosmeticRoutine(sequence) {
+    global SavedSpeed
     Sleep, 50
     Loop, 5 {
-        NavigateUI("161616161646465606")
+        NavigateUI(sequence)
         Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
     }
+    Return
+}
 
-Return
-
-Cosmetic2:
-
-    Sleep, 50
-    Loop, 5 {
-        NavigateUI("1616161616464626265606")
-        Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
-    }
-
-Return
-
-Cosmetic3:
-
-    Sleep, 50
-    Loop, 5 {
-        NavigateUI("16161616164646262626265606")
-        Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
-    }
-
-Return
-
-Cosmetic4:
-
-    Sleep, 50
-    Loop, 5 {
-        NavigateUI("1616161616464626262626465606")
-        Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
-    }
-
-Return
-
-Cosmetic5:
-
-    Sleep, 50
-    Loop, 5 {
-        NavigateUI("161616161646462626262646165606")
-        Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
-    }
-
-Return
-
-Cosmetic6:
-
-    Sleep, 50
-    Loop, 5 {
-        NavigateUI("16161616164646262626264616165606")
-        Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
-    }
-
-Return
-
-Cosmetic7:
-
-    Sleep, 50
-    Loop, 5 {
-        NavigateUI("1616161616464626262626461616165606")
-        Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
-    }
-
-Return
-
-Cosmetic8:
-
-    Sleep, 50
-    Loop, 5 {
-        NavigateUI("161616161646462626262646161616165606")
-       Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
-    }
-
-Return
-
-Cosmetic9:
-
-    Sleep, 50
-    Loop, 5 {
-        NavigateUI("16161616164646262626264616161616165606")
-        Sleep, % (SavedSpeed = "Ultra") ? 50 : (SavedSpeed = "Max") ? 30 : 200
-    }
-
-Return
+cosmeticSequences := [
+    "161616161646465606",
+    "1616161616464626265606",
+    "16161616164646262626265606",
+    "1616161616464626262626465606",
+    "161616161646462626262646165606",
+    "16161616164646262626264616165606",
+    "1616161616464626262626461616165606",
+    "161616161646462626262646161616165606",
+    "16161616164646262626264616161616165606"
+]
 
 CollectPollinatedRoutine:
-    SendDiscordWebhook(webhookURL, "**[Pollenated Plant Collection Cycle]**")
+    QueueDiscordWebhook(webhookURL, "**[Pollenated Plant Collection Cycle]**")
     NavigateUI("11110")
     SleepFromSpeed(1000, 2000)
     InventoryItemSearch("pollen")
     HotbarNavigate(1, 0, "3")
-    SendDiscordWebhook(webhookURL, "**[Collecting Left Side...]**")
+    QueueDiscordWebhook(webhookURL, "**[Collecting Left Side...]**")
     Send, {s down}
     Sleep, 270
     Send, {s up}
@@ -1823,7 +1733,7 @@ CollectPollinatedRoutine:
     Send, {d up}
     SleepFromSpeed(200, 500)
     NavigateUI("11110")
-    SendDiscordWebhook(webhookURL, "**[Collecting Right Side...]**")
+    QueueDiscordWebhook(webhookURL, "**[Collecting Right Side...]**")
     Send, {s down}
     Sleep, 270
     Send, {s up}
@@ -1883,7 +1793,7 @@ CollectPollinatedRoutine:
     Send, {a up}
     SleepFromSpeed(200, 500)
     NavigateUI("11110")
-    SendDiscordWebhook(webhookURL, "**[Collecting Middle Area...]**")
+    QueueDiscordWebhook(webhookURL, "**[Collecting Middle Area...]**")
     Send, {s down}
     Sleep, 1000
     Send, {s up}
@@ -1910,13 +1820,14 @@ CollectPollinatedRoutine:
     SleepFromSpeed(8000, 10000)
     HotbarNavigate(0, 1, "0")
     NavigateUI(11110)
-    SendDiscordWebhook(webhookURL, "**[Pollenated Plant Collection Completed]**")
+    QueueDiscordWebhook(webhookURL, "**[Pollenated Plant Collection Completed]**")
     Return
 
 ;Honey Deposit Cycle
 HoneyDepositRoutine:
+    global lastHoneyDepositTime
     depositCount := 0
-    SendDiscordWebhook(webhookURL, "**[Honey Deposit Cycle]**")
+    QueueDiscordWebhook(webhookURL, "**[Honey Deposit Cycle]**")
     NavigateUI("1111020")
     SleepFromSpeed(1000, 2000)
     Send, {d down}
@@ -1942,18 +1853,19 @@ HoneyDepositRoutine:
             Sleep, 200
         }
         depositCount++
-        SendDiscordWebhook(webhookURL, "Depositing/Collecting Honey Try #" . depositCount . ".")
+        QueueDiscordWebhook(webhookURL, "Depositing/Collecting Honey Try #" . depositCount . ".")
         Sleep, 1000
     }
-    HotbarNavigate(0, 1, "0")
+    lastHoneyDepositTime := A_TickCount
+    HotbarNavigate(0, 1, "9")
     NavigateUI(11110)
-    SendDiscordWebhook(webhookURL, "**[Honey Deposit Completed]**")
+    QueueDiscordWebhook(webhookURL, "**[Honey Deposit Completed]**")
     Return
 
 HoneyShopRoutine:
     global UINavigationFix
     honeyCompleted := 0
-    SendDiscordWebhook(webhookURL, "**[Honey Shop Cycle]**")
+    QueueDiscordWebhook(webhookURL, "**[Honey Shop Cycle]**")
     NavigateUI("1111020")
     SleepFromSpeed(1000, 2000)
     Send, {d down}
@@ -1981,7 +1893,7 @@ HoneyShopRoutine:
     if (PixelSearchInRobloxWindow(0x02EFD3, 10, 0.54, 0.20, 0.65, 0.325)) {
     ToolTip, Honey Shop Opened
     SetTimer, HideTooltip, -1500
-    SendDiscordWebhook(webhookURL, "Honey Shop Opened.")
+    QueueDiscordWebhook(webhookURL, "Honey Shop Opened.")
     Sleep, 200
     if (UINavigationFix) {
     NavigateUI("33332223333111405550555", 0)
@@ -1991,7 +1903,7 @@ HoneyShopRoutine:
     }
     Sleep, 100
     BuyItem("honey")
-    SendDiscordWebhook(webhookURL, "Honey Shop Closed.")
+    QueueDiscordWebhook(webhookURL, "Honey Shop Closed.")
     honeyCompleted = 1
     }
     if (honeyCompleted) {
@@ -2001,7 +1913,7 @@ HoneyShopRoutine:
     }
     HandleShopClose("honey", honeyCompleted)
     HotbarNavigate(0, 1, "0")
-    SendDiscordWebhook(webhookURL, "**[Honey Shop Completed]**")
+    QueueDiscordWebhook(webhookURL, "**[Honey Shop Completed]**")
     Return
 
 SaveSettings:
@@ -2050,7 +1962,7 @@ GuiClose:
 
 ReloadMacro:
     PauseMacro(1)
-    SendDiscordWebhook(webhookURL, "Macro reloaded.")
+    QueueDiscordWebhook(webhookURL, "Macro reloaded.")
     Reload
     Return
 
