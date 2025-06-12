@@ -722,6 +722,7 @@ global cycles := [
     { name: "CosmeticShop",  interval: 7200,  action: "CosmeticShopAction",  enabled: Func("IsCosmeticShopEnabled") },
     { name: "HoneyShop",     interval: 1800,  action: "HoneyShopAction",     enabled: Func("IsHoneyShopEnabled") },
     { name: "Pollinated",    interval: 3600,  action: "CollectPollinatedAction", enabled: Func("IsPollinatedEnabled") },
+    { name: "HoneyDeposit",  interval: 30,    action: "HoneyDepositAction",  enabled: Func("IsHoneyDepositEnabled") },
 ]
 
 global lastCycleTimes := {}
@@ -1252,8 +1253,9 @@ HoneyShopAction:
     }
     Return
 
-HoneyDepositStandaloneTimer:
-    if (AutoHoney && actionQueue.Length() == 0) {
+    HoneyDepositAction:
+    currentSection := "HoneyDepositAction"
+    if (AutoHoney) {
         Gosub, HoneyDepositRoutine
     }
     Return
@@ -1346,8 +1348,6 @@ ShowCycleTimers:
 InitializeMacroCycles:
     SetTimer, UpdateCurrentTime, 1000
     Gosub, InitializeCycleManager
-    SetTimer, HoneyDepositStandaloneTimer, 30000
-    honeyDepositAutoActive := 1
     Return
 
 UpdateCurrentTime:
