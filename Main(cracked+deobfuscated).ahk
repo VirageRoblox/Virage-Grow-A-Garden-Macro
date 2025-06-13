@@ -2152,7 +2152,7 @@ PerformOCRInRobloxWindow(relX1, relY1, relX2, relY2) {
 }
 
 FuzzyMatch(str1, str2, threshold := 0.8) {
-    ; Convert strings to lowercase for case-insensitive comparison
+    ; Convert strings to lowercase for case insensitive comparison
     StringLower, str1, str1
     StringLower, str2, str2
     
