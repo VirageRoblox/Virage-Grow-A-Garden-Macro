@@ -50,6 +50,114 @@ global cosmeticAutoActive := 0
 
 global actionQueue := []
 
+; ----- Start of github.com/beak2825 additions ------
+global UserRepoName := "VirageRoblox/Virage-Grow-A-Garden-Macro"
+global localFile := "Main.ahk"
+global githubCommitAPI := "https://api.github.com/repos/" . UserRepoName . "/commits?path=" . localFile
+global rawBaseURL := "https://raw.githubusercontent.com/" . UserRepoName
+
+; get local file hash (SHA-1)
+; real note, if theres errors with the auto-updater, (shouldn't be I've tested it) it will automatically run the script without updating since if it didn't, that would result in a broken macro just because theres a new update.
+if !FileGetSHA1(localFile, currentSHA) {
+    MsgBox, 16, Error, Failed to compute current file hash.
+    Gosub, ShowGui
+}
+
+; get github commits from api (non-caching)
+json := httpGet(githubCommitAPI)
+if !json {
+    MsgBox, 16, Error, Failed to query GitHub commit info.
+    Gosub, ShowGui
+}
+
+RegExMatch(json, """sha"":\s*""([0-9a-f]{40})""", m)
+if !m1 {
+    MsgBox, 16, Error, Could not extract commit SHA from API response.
+    Gosub, ShowGui
+}
+latestCommitSHA := m1
+newRawURL := rawBaseURL . "/" . latestCommitSHA . "/" . localFile
+
+; download latest to temp
+tmpFile := A_Temp "\new_" . localFile
+statusCode := ""
+response := ""
+
+if !DownloadFileWithStatus(newRawURL, tmpFile, statusCode, response) {
+    MsgBox, 16, Error, Failed to download latest file. HTTP status: %statusCode%
+    Gosub, ShowGui
+}
+
+; get DOWNLOADED file hash
+if !FileGetSHA1(tmpFile, newFileSHA) {
+    MsgBox, 16, Error, Failed to compute SHA1 of downloaded file.
+    FileDelete, %tmpFile%
+    Gosub, ShowGui
+}
+
+; Compare hashes
+if (currentSHA = newFileSHA) {
+    FileDelete, %tmpFile%
+    Gosub, ShowGui ; no update needed
+} else {
+    ; replace local file, restart ahk file
+    FileDelete, %localFile%
+    FileMove, %tmpFile%, %localFile%, 1
+
+    MsgBox, 64, Update, A new version was downloaded. The script will now restart to apply the update.
+    Run, %A_AhkPath% "%A_ScriptFullPath%"
+    ExitApp
+}
+
+
+httpGet(url) {
+    http := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+    http.Open("GET", url, false)
+    http.SetRequestHeader("User-Agent", "AHK-Updater")
+    try {
+        http.Send()
+        if (http.Status = 200)
+            return http.ResponseText
+    } catch {
+        return ""
+    }
+    return ""
+}
+
+DownloadFileWithStatus(url, savePath, ByRef statusCode, ByRef responseText) {
+    http := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+    http.Open("GET", url, false)
+    http.SetRequestHeader("User-Agent", "AHK-Updater")
+    try {
+        http.Send()
+        statusCode := http.Status
+        responseText := http.ResponseText
+        if (statusCode = 200) {
+            if FileExist(savePath)
+                FileDelete, %savePath%
+            FileAppend, %responseText%, %savePath%
+            return true
+        }
+    } catch e {
+        statusCode := "Exception"
+        responseText := "Error code: " . e.What . "`nMessage: " . e.Message . "`nExtra: " . e.Extra
+    }
+    return false
+}
+
+FileGetSHA1(file, ByRef hashOut) {
+    temp := A_Temp "\hash_output.txt"
+    RunWait, %ComSpec% /c certutil -hashfile "%file%" SHA1 > "%temp%", , Hide
+    FileRead, out, %temp%
+    FileDelete, %temp%
+    if RegExMatch(out, "i)SHA1 hash.*\R([0-9A-F]{40})", m) {
+        hashOut := m1
+        return true
+    }
+    return false
+}
+
+; ----- End of github.com/beak2825 additions ------
 settingsFile := A_ScriptDir "\settings.ini"
 
 ; unused
@@ -2113,7 +2221,7 @@ SaveSettings:
 
     Gui, Submit, NoHide
 
-    ; — now write them out —
+    ; - now write them out -
     Loop, % eggItems.Length()
         IniWrite, % (eggItem%A_Index% ? 1 : 0), %settingsFile%, Egg, Item%A_Index%
 
